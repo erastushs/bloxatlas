@@ -18,9 +18,11 @@ export default async function GamePage({ params }: Props) {
 
   return (
     <main className="mx-auto max-w-5xl p-6">
-      <h1 className="text-4xl font-bold">{game.name}</h1>
+      <div className="mb-10">
+        <h1 className="text-5xl font-bold">{game.name}</h1>
 
-      <p className="mt-4 text-zinc-400">{game.creator}</p>
+        <p className="mt-3 text-zinc-400">by {game.creator}</p>
+      </div>
 
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         <StatCard title="Active Players" value={game.playing.toLocaleString()} />
@@ -29,6 +31,12 @@ export default async function GamePage({ params }: Props) {
 
         <StatCard title="Creator" value={game.creator} />
       </div>
+
+      <section className="mt-10">
+        <h2 className="mb-3 text-xl font-semibold">Description</h2>
+
+        <p className="text-zinc-400">{game.description || 'No description available.'}</p>
+      </section>
     </main>
   )
 }
