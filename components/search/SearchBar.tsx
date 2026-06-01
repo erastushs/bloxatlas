@@ -1,7 +1,25 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+
 export default function SearchBar() {
+  const [query, setQuery] = useState('')
+  const router = useRouter()
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+
+    if (!query.trim()) return
+
+    router.push(`/search?q=${encodeURIComponent(query)}`)
+  }
+
   return (
-    <div className="mx-auto mt-8 max-w-2xl">
+    <form onSubmit={handleSubmit} className="mx-auto mt-8 max-w-2xl">
       <input
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
         type="text"
         placeholder="Search Roblox games..."
         className="
@@ -16,6 +34,6 @@ export default function SearchBar() {
           focus:border-cyan-500
         "
       />
-    </div>
+    </form>
   )
 }
