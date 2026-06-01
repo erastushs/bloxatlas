@@ -1,25 +1,13 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
+import { searchGames } from '@/services/search.service'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const query = request.nextUrl.searchParams.get('q')
+
+  const games = await searchGames(query || undefined)
+
   return NextResponse.json({
     success: true,
-    games: [
-      {
-        id: 1,
-        name: 'Grow A Garden',
-        creator: 'The Garden Game',
-        playing: 1200000,
-        visits: 5000000000,
-        thumbnail: '',
-      },
-      {
-        id: 2,
-        name: 'Blue Lock Rivals',
-        creator: 'Blue Lock Community',
-        playing: 350000,
-        visits: 1000000000,
-        thumbnail: '',
-      },
-    ],
+    games,
   })
 }

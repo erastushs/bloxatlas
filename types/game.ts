@@ -1,8 +1,15 @@
 export interface Game {
   id: number
+  universe_id?: number
+
   name: string
   creator: string
+
+  description?: string
+
   playing: number
   visits: number
-  thumbnail: string
+  favorites: number
+
+  thumbnail?: string
 }
