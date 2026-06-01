@@ -1,17 +1,21 @@
 export interface Game {
   id: number
+
   name: string
-  description: string
 
-  creatorId: number
-  creatorName: string
+  description?: string
 
-  playing: number
-  visits: number
-  favorites: number
+  creatorName?: string
 
-  thumbnailUrl: string
+  playing?: number
 
-  createdAt: string
-  updatedAt: string
+  visits?: number
+
+  favorites?: number
+
+  thumbnailUrl?: string
+
+  createdAt?: string
+
+  updatedAt?: string
 }
