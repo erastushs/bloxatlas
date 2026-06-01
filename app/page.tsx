@@ -1,4 +1,5 @@
 import SearchBar from '@/components/search/SearchBar'
+import PopularGames from '@/components/home/PopularGames'
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
 
         <SearchBar />
       </section>
+      <PopularGames />
     </main>
   )
 }
