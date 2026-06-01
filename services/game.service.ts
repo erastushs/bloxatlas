@@ -6,6 +6,9 @@ export async function getGameById(id: number) {
   if (error) {
     throw error
   }
+  if (!data) {
+    throw new Error('Game not found')
+  }
 
   return data
 }

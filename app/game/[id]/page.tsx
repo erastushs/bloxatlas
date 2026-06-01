@@ -1,3 +1,4 @@
+import StatCard from '@/components/cards/StatCard'
 type Props = {
   params: Promise<{
     id: string
@@ -22,15 +23,11 @@ export default async function GamePage({ params }: Props) {
       <p className="mt-4 text-zinc-400">{game.creator}</p>
 
       <div className="mt-8 grid gap-4 md:grid-cols-3">
-        <div className="rounded-xl border border-zinc-800 p-4">
-          <p>Playing</p>
-          <h2>{game.playing.toLocaleString()}</h2>
-        </div>
+        <StatCard title="Active Players" value={game.playing.toLocaleString()} />
 
-        <div className="rounded-xl border border-zinc-800 p-4">
-          <p>Visits</p>
-          <h2>{game.visits.toLocaleString()}</h2>
-        </div>
+        <StatCard title="Visits" value={game.visits.toLocaleString()} />
+
+        <StatCard title="Creator" value={game.creator} />
       </div>
     </main>
   )
