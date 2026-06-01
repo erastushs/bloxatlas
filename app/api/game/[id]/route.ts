@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server'
-import { fetchTrendingGames } from '@/services/game.service'
+import { getGameById } from '@/services/game.service'
 
-export async function GET() {
-  try {
-    const games = await fetchTrendingGames()
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
 
-    return NextResponse.json(games)
-  } catch {
-    return NextResponse.json({ error: 'Failed to fetch games' }, { status: 500 })
-  }
+  const game = await getGameById(Number(id))
+
+  return NextResponse.json({
+    success: true,
+    game,
+  })
 }
