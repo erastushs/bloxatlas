@@ -60,7 +60,7 @@ docs/
 ### Phase 3 - Database
 
 - [x] Games Table
-- [ ] Snapshots Table
+- [x] Snapshots Table
 - [ ] Historical Data
 - [ ] Growth Tracking
 

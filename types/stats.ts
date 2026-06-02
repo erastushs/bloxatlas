@@ -10,3 +10,12 @@ export interface HistoricalSnapshot {
   visits: number
   favorites: number
 }
+export interface Snapshot {
+  id: number
+  game_id: number
+
+  playing: number
+  visits: number
+
+  created_at: string
+}
