@@ -14,12 +14,13 @@ export default function GameCard({ id, name, creator, playing, thumbnail }: Prop
     <Link href={`/game/${id}`}>
       <div className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900 transition hover:border-cyan-500">
         <div className="relative aspect-video">
-          <Image
-            src={thumbnail || 'https://placehold.co/600x400?text=BloxAtlas'}
-            alt={name}
-            fill
-            className="object-cover"
-          />
+          {thumbnail ? (
+            <Image src={thumbnail} alt={name} fill className="object-cover" />
+          ) : (
+            <div className="flex h-full items-center justify-center bg-zinc-800">
+              <span className="text-sm text-zinc-500">Roblox Game</span>
+            </div>
+          )}
         </div>
 
         <div className="p-4">
