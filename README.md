@@ -71,7 +71,7 @@ docs/
 - [x] Fix Thumbnail System
 - [x] Improve Game Detail Page
 - [x] Add Footer
-- [ ] Add Empty States
+- [x] Add Empty States
 - [ ] Add Loading Skeletons
 
 ### M5 - Real Data Ingestion
