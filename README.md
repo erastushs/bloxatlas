@@ -107,11 +107,11 @@ docs/
 
 ## Current Milestone
 
-M4 - Polish MVP
+M5 - Real Data Ingestion
 
 Current Task:
 
-- Fix Thumbnail System
+- Research Roblox Data Sources
 
 ---
 
