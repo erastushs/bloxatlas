@@ -45,6 +45,7 @@ docs/
 - [x] Project Structure
 - [x] Navbar
 - [x] Homepage Hero
+- [x] Homepage analytics
 - [x] Search Page
 - [x] Game Detail Page
 - [x] Supabase Connection

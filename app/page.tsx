@@ -1,5 +1,6 @@
 import SearchBar from '@/components/search/SearchBar'
 import PopularGames from '@/components/home/PopularGames'
+import StatsBar from '@/components/home/StatsBar'
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
 
         <SearchBar />
       </section>
+      <StatsBar />
       <PopularGames />
     </main>
   )
