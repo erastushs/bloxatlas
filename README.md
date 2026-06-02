@@ -76,12 +76,11 @@ docs/
 
 ### M5 - Data Collection System
 
-[ ] Design Final Database Schema
-[ ] Design Collector Architecture
-[ ] Build Roblox Source Layer
-[ ] Build Collector Service
-[ ] Auto Save Games
-[ ] Auto Save Snapshots
+[x] Collector Architecture
+[ ] Roblox Source Layer
+[ ] Game Sync Job
+[ ] Snapshot Job
+[ ] Auto Database Update
 
 ### M6 - Discovery
 
