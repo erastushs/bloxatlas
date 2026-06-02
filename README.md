@@ -69,7 +69,7 @@ docs/
 ### M4 - Polish MVP (Current)
 
 - [x] Fix Thumbnail System
-- [ ] Improve Game Detail Page
+- [x] Improve Game Detail Page
 - [ ] Add Footer
 - [ ] Add Empty States
 - [ ] Add Loading Skeletons

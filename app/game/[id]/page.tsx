@@ -18,6 +18,11 @@ export default async function GamePage({ params }: Props) {
 
   return (
     <main className="mx-auto max-w-5xl p-6">
+      <div className="mb-8 overflow-hidden rounded-2xl border border-zinc-800">
+        <div className="flex aspect-[3/1] items-center justify-center bg-zinc-900">
+          <span className="text-zinc-500">Game Thumbnail</span>
+        </div>
+      </div>
       <div className="mb-10">
         <h1 className="text-5xl font-bold">{game.name}</h1>
 
