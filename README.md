@@ -72,7 +72,7 @@ docs/
 - [x] Improve Game Detail Page
 - [x] Add Footer
 - [x] Add Empty States
-- [ ] Add Loading Skeletons
+- [-] Loading Skeletons (Deferred)
 
 ### M5 - Real Data Ingestion
 
