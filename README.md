@@ -37,7 +37,9 @@ docs/
 
 ## Roadmap
 
-### Phase 1 - Foundation
+## Roadmap
+
+### M1 - Foundation ✅
 
 - [x] Next.js Setup
 - [x] Tailwind Setup
@@ -45,42 +47,56 @@ docs/
 - [x] Project Structure
 - [x] Navbar
 - [x] Homepage Hero
-- [x] Homepage analytics
 - [x] Search Page
 - [x] Game Detail Page
-- [x] Supabase Connection
+- [x] Supabase Integration
 
-### Phase 2 - Search System
+### M2 - Search System ✅
 
 - [x] Search API
 - [x] Search Results Page
 - [x] Query Search
-- [ ] Search Suggestions
-- [ ] Search History
 
-### Phase 3 - Database
+### M3 - Analytics Foundation ✅
 
 - [x] Games Table
 - [x] Snapshots Table
-- [x] Historical Data
-- [ ] Growth Tracking
+- [x] Homepage Analytics
+- [x] Game Stats API
+- [x] Growth API
+- [x] Historical Data Foundation
 
-### Phase 4 - Discovery
+### M4 - Polish MVP (Current)
 
-- [ ] Popular Games
+- [x] Fix Thumbnail System
+- [ ] Improve Game Detail Page
+- [ ] Add Footer
+- [ ] Add Empty States
+- [ ] Add Loading Skeletons
+
+### M5 - Real Data Ingestion
+
+- [ ] Roblox Game Lookup
+- [ ] Auto Thumbnail Retrieval
+- [ ] Auto Save Game To Database
+- [ ] Background Sync
+
+### M6 - Discovery
+
+- [ ] Popular Games Ranking
 - [ ] Trending Games
-- [ ] Fastest Growing
+- [ ] Fastest Growing Games
 - [ ] Recently Updated
 - [ ] Top Active Games
 
-### Phase 5 - Analytics
+### M7 - Advanced Analytics
 
 - [ ] Historical Charts
-- [ ] Player Tracking
-- [ ] Visits Tracking
+- [ ] Growth Leaderboard
+- [ ] Trending Algorithm
 - [ ] Favorites Tracking
 
-### Phase 6 - Public API
+### M8 - Public API
 
 - [ ] API Documentation
 - [ ] Public Endpoints
@@ -91,46 +107,11 @@ docs/
 
 ## Current Milestone
 
-M3 - Database Foundation
+M4 - Polish MVP
 
-Current Focus:
+Current Task:
 
-- Improve Game Detail Page
-- Add Description Support
-- Create Snapshots Table
-- Prepare Historical Tracking
-
-M4 - Historical Analytics Foundation
-
-M5 - Homepage Analytics
-
-M7 - Polish MVP
-
-Current Focus:
-
-- [ ] Fix thumbnail system
-- [ ] Improve game detail page
-- [ ] Add footer
-- [ ] Add empty states
-- [ ] Add loading skeletons
-
----
-
-M8 - Real Data Ingestion
-
-- [ ] Roblox game lookup
-- [ ] Auto thumbnail retrieval
-- [ ] Auto save game to database
-- [ ] Background sync
-
----
-
-M9 - Analytics
-
-- [ ] Growth leaderboard
-- [ ] Trending algorithm
-- [ ] Historical charts
-- [ ] Fastest growing games
+- Fix Thumbnail System
 
 ---
 

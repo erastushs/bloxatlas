@@ -56,3 +56,8 @@ Planned features:
 - Historical statistics storage
 - Game stats API
 - Snapshot service
+
+### Added
+
+- Thumbnail fallback placeholder
+- Improved game card reliability
