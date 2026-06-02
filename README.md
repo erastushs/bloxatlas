@@ -104,6 +104,34 @@ M4 - Historical Analytics Foundation
 
 M5 - Homepage Analytics
 
+M7 - Polish MVP
+
+Current Focus:
+
+- [ ] Fix thumbnail system
+- [ ] Improve game detail page
+- [ ] Add footer
+- [ ] Add empty states
+- [ ] Add loading skeletons
+
+---
+
+M8 - Real Data Ingestion
+
+- [ ] Roblox game lookup
+- [ ] Auto thumbnail retrieval
+- [ ] Auto save game to database
+- [ ] Background sync
+
+---
+
+M9 - Analytics
+
+- [ ] Growth leaderboard
+- [ ] Trending algorithm
+- [ ] Historical charts
+- [ ] Fastest growing games
+
 ---
 
 ## Database
