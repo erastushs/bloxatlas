@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation'
 
 import GameCard from '@/components/cards/GameCard'
 import { useSearch } from '@/hooks/useSearch'
+import type { Game } from '@/types/game'
 
 export default function SearchPage() {
   const params = useSearchParams()
@@ -19,7 +20,7 @@ export default function SearchPage() {
       <p className="mb-6 text-zinc-400">Query: {query}</p>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {games.map((game: any) => (
+        {games.map((game: Game) => (
           <GameCard
             key={game.id}
             id={game.id}

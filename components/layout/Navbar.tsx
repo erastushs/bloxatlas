@@ -1,3 +1,4 @@
+import Link from 'next/link'
 export default function Navbar() {
   return (
     <header className="border-b border-zinc-800">
@@ -5,9 +6,9 @@ export default function Navbar() {
         <h1 className="text-xl font-bold text-cyan-500">BloxAtlas</h1>
 
         <nav className="flex gap-6 text-sm text-zinc-400">
-          <a href="/">Home</a>
-          <a href="/trending">Trending</a>
-          <a href="/search">Search</a>
+          <Link href="/">Home</Link>
+          <Link href="/trending">Trending</Link>
+          <Link href="/search">Search</Link>
         </nav>
       </div>
     </header>

@@ -99,6 +99,8 @@ Current Focus:
 - Create Snapshots Table
 - Prepare Historical Tracking
 
+M4 - Historical Analytics Foundation
+
 ---
 
 ## Database
