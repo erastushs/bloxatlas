@@ -70,7 +70,7 @@ docs/
 
 - [x] Fix Thumbnail System
 - [x] Improve Game Detail Page
-- [ ] Add Footer
+- [x] Add Footer
 - [ ] Add Empty States
 - [ ] Add Loading Skeletons
 
