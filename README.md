@@ -101,6 +101,8 @@ Current Focus:
 
 M4 - Historical Analytics Foundation
 
+M5 - Homepage Analytics
+
 ---
 
 ## Database
