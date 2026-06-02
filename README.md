@@ -1,36 +1,144 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BloxAtlas
 
-## Getting Started
+Explore Roblox Through Data
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+BloxAtlas adalah platform analytics dan discovery Roblox yang berfokus pada pencarian game, statistik, pertumbuhan game, dan data historis.
+
+Tujuan jangka panjang adalah menjadi pusat data Roblox yang menyediakan informasi game, analitik, serta Public API untuk developer dan komunitas.
+
+---
+
+## Tech Stack
+
+- Next.js 16
+- TypeScript
+- Tailwind CSS
+- Supabase
+- Upstash Redis (planned)
+- Vercel
+
+---
+
+## Project Structure
+
+```txt
+app/
+components/
+hooks/
+lib/
+services/
+types/
+docs/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Roadmap
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Phase 1 - Foundation
 
-## Learn More
+- [x] Next.js Setup
+- [x] Tailwind Setup
+- [x] App Router Setup
+- [x] Project Structure
+- [x] Navbar
+- [x] Homepage Hero
+- [x] Search Page
+- [x] Game Detail Page
+- [x] Supabase Connection
 
-To learn more about Next.js, take a look at the following resources:
+### Phase 2 - Search System
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [x] Search API
+- [x] Search Results Page
+- [x] Query Search
+- [ ] Search Suggestions
+- [ ] Search History
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Phase 3 - Database
 
-## Deploy on Vercel
+- [x] Games Table
+- [ ] Snapshots Table
+- [ ] Historical Data
+- [ ] Growth Tracking
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Phase 4 - Discovery
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] Popular Games
+- [ ] Trending Games
+- [ ] Fastest Growing
+- [ ] Recently Updated
+- [ ] Top Active Games
+
+### Phase 5 - Analytics
+
+- [ ] Historical Charts
+- [ ] Player Tracking
+- [ ] Visits Tracking
+- [ ] Favorites Tracking
+
+### Phase 6 - Public API
+
+- [ ] API Documentation
+- [ ] Public Endpoints
+- [ ] Rate Limiting
+- [ ] API Keys
+
+---
+
+## Current Milestone
+
+M3 - Database Foundation
+
+Current Focus:
+
+- Improve Game Detail Page
+- Add Description Support
+- Create Snapshots Table
+- Prepare Historical Tracking
+
+---
+
+## Database
+
+### games
+
+Stores indexed Roblox games.
+
+Current fields:
+
+- id
+- name
+- creator
+- playing
+- visits
+- description
+- thumbnail
+- created_at
+
+### snapshots
+
+Planned table for historical statistics.
+
+---
+
+## Future Features
+
+- Creator Profiles
+- Game Analytics
+- Similar Games
+- Public API
+- Trending Algorithms
+- Fastest Growing Rankings
+
+---
+
+## Deployment
+
+Planned:
+
+- Vercel
+- Supabase
+- Upstash Redis
