@@ -77,7 +77,7 @@ docs/
 ### M5 - Data Collection System
 
 [x] Collector Architecture
-[ ] Roblox Source Layer
+[x] Roblox Source Layer
 [ ] Game Sync Job
 [ ] Snapshot Job
 [ ] Auto Database Update
