@@ -74,12 +74,13 @@ docs/
 - [x] Add Empty States
 - [-] Loading Skeletons (Deferred)
 
-### M5 - Real Data Ingestion
+### M5 - Data Collection System
 
-- [ ] Roblox Game Lookup
-- [ ] Auto Thumbnail Retrieval
-- [ ] Auto Save Game To Database
-- [ ] Background Sync
+[ ] Research Roblox Sources
+[ ] Build Collector Architecture
+[ ] Create Sync Service
+[ ] Create Snapshot Scheduler
+[ ] Auto Update Statistics
 
 ### M6 - Discovery
 
@@ -107,11 +108,10 @@ docs/
 
 ## Current Milestone
 
-M5 - Real Data Ingestion
+M5 - Data Collection System
 
 Current Task:
-
-- Research Roblox Data Sources
+Research Roblox Data Sources
 
 ---
 
