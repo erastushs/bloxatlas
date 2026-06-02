@@ -61,7 +61,7 @@ docs/
 
 - [x] Games Table
 - [x] Snapshots Table
-- [ ] Historical Data
+- [x] Historical Data
 - [ ] Growth Tracking
 
 ### Phase 4 - Discovery

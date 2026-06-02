@@ -49,3 +49,10 @@ Planned features:
 - Public API
 - API documentation
 - Rate limiting
+
+### Added
+
+- Snapshots table
+- Historical statistics storage
+- Game stats API
+- Snapshot service
