@@ -10,6 +10,20 @@ export async function snapshotGames() {
 
   for (const game of games) {
     const stats = await getGameStats(game.universe_id)
+    const { error: updateError } = await supabase
+      .from('games')
+      .update({
+        playing: stats.playing,
+        visits: stats.visits,
+        favorites: stats.favoritedCount,
+
+        last_synced_at: new Date().toISOString(),
+      })
+      .eq('id', game.id)
+    if (updateError) {
+      console.error(updateError)
+      continue
+    }
 
     const { error: snapshotError } = await supabase.from('snapshots').insert({
       game_id: game.id,
@@ -23,9 +37,10 @@ export async function snapshotGames() {
       console.error(snapshotError)
       continue
     }
-
+    console.log(`Updated: ${game.name}`)
     console.log(`Snapshot: ${game.name}`)
   }
 
   console.log('Done.')
 }
+snapshotGames().catch(console.error)
