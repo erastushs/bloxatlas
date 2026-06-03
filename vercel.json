@@ -1,0 +1,42 @@
+{
+  "builds": [
+    {
+      "src": "app/api/cron/snapshot/route.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "app/api/cron/sync/route.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "app/game/[id]/page.tsx",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/cron/snapshot",
+      "dest": "/api/cron/snapshot/route.ts"
+    },
+    {
+      "src": "/api/cron/sync",
+      "dest": "/api/cron/sync/route.ts"
+    },
+    {
+      "src": "/game/(.*)",
+      "dest": "/game/[id]/page.tsx"
+    },
+    {
+      "crons": [
+        {
+          "path": "/api/cron/snapshot",
+          "schedule": "0 * * * *"
+        },
+        {
+          "path": "/api/cron/sync",
+          "schedule": "0 3 * * *"
+        }
+      ]
+    }
+  ]
+}

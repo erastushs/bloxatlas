@@ -12,14 +12,15 @@ type Props = {
 
 export default async function GamePage({ params }: Props) {
   const { id } = await params
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
 
-  const response = await fetch(`http://localhost:3000/api/game/${id}`, {
+  const response = await fetch(`${baseUrl}/api/game/${id}`, {
     cache: 'no-store',
   })
 
   const data = await response.json()
 
-  const growthResponse = await fetch(`http://localhost:3000/api/game/${id}/growth`, {
+  const growthResponse = await fetch(`${baseUrl}/api/game/${id}/growth`, {
     cache: 'no-store',
   })
 
