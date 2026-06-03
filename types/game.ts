@@ -6,6 +6,7 @@ export interface Game {
   visits: number
   description?: string
   thumbnail?: string
+  last_synced_at?: string
 }
 
 export interface PopularGame extends Game {
@@ -16,6 +17,11 @@ export interface PopularGame extends Game {
 export interface TopActiveGame extends Game {
   rank: number
   activeScore: number
+}
+
+export interface RecentlyUpdatedGame extends Game {
+  rank: number
+  lastSyncedAt: string
 }
 
 export interface TrendingGame extends Game {

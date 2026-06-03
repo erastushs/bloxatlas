@@ -10,6 +10,7 @@ export default function Navbar() {
           <Link href="/trending">Trending</Link>
           <Link href="/fastest-growing">Growth</Link>
           <Link href="/top-active">Active</Link>
+          <Link href="/recently-updated">Updated</Link>
           <Link href="/search">Search</Link>
         </nav>
       </div>

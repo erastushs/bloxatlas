@@ -16,6 +16,10 @@ export const navigation = [
     href: '/top-active',
   },
   {
+    name: 'Updated',
+    href: '/recently-updated',
+  },
+  {
     name: 'Search',
     href: '/search',
   },
