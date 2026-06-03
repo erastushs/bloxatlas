@@ -13,6 +13,11 @@ export interface PopularGame extends Game {
   popularityScore: number
 }
 
+export interface TopActiveGame extends Game {
+  rank: number
+  activeScore: number
+}
+
 export interface TrendingGame extends Game {
   rank: number
   playerDelta: number

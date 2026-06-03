@@ -12,6 +12,10 @@ export const navigation = [
     href: '/fastest-growing',
   },
   {
+    name: 'Active',
+    href: '/top-active',
+  },
+  {
     name: 'Search',
     href: '/search',
   },

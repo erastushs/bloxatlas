@@ -100,7 +100,7 @@ docs/
 - [x] Popular Games Ranking
 - [x] Trending Games
 - [x] Fastest Growing Games
-- [ ] Top Active Games
+- [x] Top Active Games
 - [ ] Recently Updated Games
 
 ### M7 - Discovery
