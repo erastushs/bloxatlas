@@ -5,6 +5,7 @@ type Props = {
   }>
 }
 import Image from 'next/image'
+import PlayerChart from '@/components/charts/PlayerChart'
 
 export default async function GamePage({ params }: Props) {
   const { id } = await params
@@ -48,7 +49,11 @@ export default async function GamePage({ params }: Props) {
         <StatCard title="Visits" value={game.visits.toLocaleString()} />
 
         <StatCard title="Creator" value={game.creator} />
-        <pre>{JSON.stringify(growthData, null, 2)}</pre>
+        <section className="mt-8">
+          <h2 className="mb-4 text-xl font-bold">Player Activity</h2>
+
+          <PlayerChart data={growthData.growth} />
+        </section>
       </div>
 
       <section className="mt-10">

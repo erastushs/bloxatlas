@@ -96,7 +96,7 @@ docs/
 ### M6 - Analytics & Rankings (Current)
 
 - [x] Growth API
-- [ ] Historical Charts
+- [x] Historical Charts
 - [ ] Popular Games Ranking
 - [ ] Trending Games
 - [ ] Fastest Growing Games

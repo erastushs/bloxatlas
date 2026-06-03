@@ -5,7 +5,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'rec
 type Props = {
   data: {
     playing: number
-    created_at: string
+    label: string
   }[]
 }
 
@@ -14,7 +14,7 @@ export default function PlayerChart({ data }: Props) {
     <div className="h-80 w-full">
       <ResponsiveContainer>
         <LineChart data={data}>
-          <XAxis dataKey="created_at" />
+          <XAxis dataKey="label" />
           <YAxis />
           <Tooltip />
 
