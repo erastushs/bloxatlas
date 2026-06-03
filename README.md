@@ -113,9 +113,9 @@ docs/
 - [x] Typography System
 - [x] Reusable UI Components
 - [-] Card Variants (later)
-- [ ] Loading Skeletons
-- [ ] Empty States
-- [ ] Error States
+- [x] Loading Skeletons
+- [x] Empty States
+- [x] Error States
 - [ ] Dark Theme Refinement
 
 ### M8 - Responsive & Performance

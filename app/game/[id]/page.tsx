@@ -1,12 +1,14 @@
+import Image from 'next/image'
+
 import StatCard from '@/components/cards/StatCard'
+import PlayerChart from '@/components/charts/PlayerChart'
+import Container from '@/components/ui/Container'
+
 type Props = {
   params: Promise<{
     id: string
   }>
 }
-import Image from 'next/image'
-import PlayerChart from '@/components/charts/PlayerChart'
-import Container from '@/components/ui/Container'
 
 export default async function GamePage({ params }: Props) {
   const { id } = await params
@@ -38,27 +40,31 @@ export default async function GamePage({ params }: Props) {
           </div>
         )}
       </div>
-      <div className="mb-10">
+
+      <header className="mb-10">
         <h1 className="type-display">{game.name}</h1>
 
         <p className="mt-3 text-content-muted">by {game.creator}</p>
-      </div>
+      </header>
 
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
-        <StatCard title="Active Players" value={game.playing.toLocaleString()} />
+      <section>
+        <div className="grid gap-4 md:grid-cols-3">
+          <StatCard title="Active Players" value={game.playing.toLocaleString()} />
 
-        <StatCard title="Visits" value={game.visits.toLocaleString()} />
+          <StatCard title="Visits" value={game.visits.toLocaleString()} />
 
-        <StatCard title="Creator" value={game.creator} />
-        <section className="mt-8">
-          <h2 className="type-card-title mb-4">Player Activity</h2>
-
-          <PlayerChart data={growthData.growth} />
-        </section>
-      </div>
+          <StatCard title="Creator" value={game.creator} />
+        </div>
+      </section>
 
       <section className="mt-10">
-        <h2 className="type-card-title mb-3">Description</h2>
+        <h2 className="mb-4 type-card-title">Player Activity</h2>
+
+        <PlayerChart data={growthData.growth} />
+      </section>
+
+      <section className="mt-10">
+        <h2 className="mb-3 type-card-title">Description</h2>
 
         <p className="text-content-muted">{game.description || 'No description available.'}</p>
       </section>
