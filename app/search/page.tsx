@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation'
 
 import GameCard from '@/components/cards/GameCard'
 import { useSearch } from '@/hooks/useSearch'
+import Container from '@/components/ui/Container'
 import type { Game } from '@/types/game'
 
 export default function SearchPage() {
@@ -14,8 +15,8 @@ export default function SearchPage() {
   const { games } = useSearch(query)
 
   return (
-    <main className="mx-auto max-w-7xl p-6">
-      <h1 className="mb-6 text-3xl font-bold">Search Results</h1>
+    <Container as="main" className="py-6">
+      <h1 className="type-section-title mb-6">Search Results</h1>
 
       <p className="mb-6 text-content-muted">Query: {query}</p>
 
@@ -34,11 +35,11 @@ export default function SearchPage() {
         </div>
       ) : (
         <div className="rounded-card border border-border-default bg-surface shadow-card p-10 text-center">
-          <h2 className="text-xl font-semibold">No games found</h2>
+          <h2 className="type-card-title">No games found</h2>
 
           <p className="mt-2 text-content-muted">Try another search keyword.</p>
         </div>
       )}
-    </main>
+    </Container>
   )
 }

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import Badge from '@/components/ui/Badge'
 import type { FastestGrowingGame } from '@/types/game'
 
 type Props = {
@@ -23,15 +24,13 @@ export default function FastestGrowingCard({ game }: Props) {
             <div className="flex h-full items-center justify-center text-sm text-content-subtle">Roblox Game</div>
           )}
 
-          <div className="absolute left-2 top-2 rounded-control border border-border-strong bg-background-elevated/90 px-2 py-1 text-sm font-semibold text-brand">
-            #{game.rank}
-          </div>
+          <Badge className="absolute left-2 top-2">#{game.rank}</Badge>
         </div>
 
         <div className="min-w-0">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
             <div className="min-w-0">
-              <h2 className="truncate text-lg font-semibold">{game.name}</h2>
+              <h2 className="type-card-title truncate">{game.name}</h2>
               <p className="mt-1 text-sm text-content-muted">by {game.creator}</p>
             </div>
 

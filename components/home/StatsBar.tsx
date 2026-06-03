@@ -20,19 +20,19 @@ export default function StatsBar() {
       <div className="rounded-card border border-border-default bg-surface shadow-card p-6">
         <p className="text-content-muted">Indexed Games</p>
 
-        <h2 className="mt-2 text-3xl font-bold">{stats.totalGames}</h2>
+        <h2 className="type-section-title mt-2">{stats.totalGames}</h2>
       </div>
 
       <div className="rounded-card border border-border-default bg-surface shadow-card p-6">
         <p className="text-content-muted">Active Players</p>
 
-        <h2 className="mt-2 text-3xl font-bold">{stats.totalPlayers.toLocaleString()}</h2>
+        <h2 className="type-section-title mt-2">{stats.totalPlayers.toLocaleString()}</h2>
       </div>
 
       <div className="rounded-card border border-border-default bg-surface shadow-card p-6">
         <p className="text-content-muted">Total Visits</p>
 
-        <h2 className="mt-2 text-3xl font-bold">{stats.totalVisits.toLocaleString()}</h2>
+        <h2 className="type-section-title mt-2">{stats.totalVisits.toLocaleString()}</h2>
       </div>
     </div>
   )

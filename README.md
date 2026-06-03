@@ -110,8 +110,8 @@ docs/
 - [x] Favicon
 - [x] Design Tokens
 - [x] Color System
-- [ ] Typography System
-- [ ] Reusable UI Components
+- [x] Typography System
+- [x] Reusable UI Components
 - [ ] Card Variants
 - [ ] Loading Skeletons
 - [ ] Empty States

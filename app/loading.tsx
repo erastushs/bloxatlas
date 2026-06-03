@@ -1,7 +1,9 @@
+import Container from '@/components/ui/Container'
+
 export default function Loading() {
   return (
-    <main className="p-6">
-      <p>Loading...</p>
-    </main>
+    <Container as="main" className="py-12">
+      <p className="text-content-muted">Loading...</p>
+    </Container>
   )
 }

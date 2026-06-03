@@ -25,7 +25,7 @@ export default function GameCard({ id, name, creator, playing, visits, thumbnail
         </div>
 
         <div className="p-4">
-          <h3 className="font-semibold">{name}</h3>
+          <h3 className="type-card-title">{name}</h3>
 
           <p className="mt-1 text-sm text-content-muted">{creator}</p>
 
