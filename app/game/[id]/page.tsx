@@ -26,21 +26,21 @@ export default async function GamePage({ params }: Props) {
 
   return (
     <main className="mx-auto max-w-5xl p-6">
-      <div className="mb-8 overflow-hidden rounded-2xl border border-zinc-800">
+      <div className="mb-8 overflow-hidden rounded-card border border-border-default">
         {game.thumbnail ? (
           <div className="relative aspect-[3/1]">
             <Image src={game.thumbnail} alt={game.name} fill sizes="100vw" className="object-cover" priority />
           </div>
         ) : (
-          <div className="flex aspect-[3/1] items-center justify-center bg-zinc-900">
-            <span className="text-zinc-500">Game Thumbnail</span>
+          <div className="flex aspect-[3/1] items-center justify-center bg-surface">
+            <span className="text-content-subtle">Game Thumbnail</span>
           </div>
         )}
       </div>
       <div className="mb-10">
         <h1 className="text-5xl font-bold">{game.name}</h1>
 
-        <p className="mt-3 text-zinc-400">by {game.creator}</p>
+        <p className="mt-3 text-content-muted">by {game.creator}</p>
       </div>
 
       <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -59,7 +59,7 @@ export default async function GamePage({ params }: Props) {
       <section className="mt-10">
         <h2 className="mb-3 text-xl font-semibold">Description</h2>
 
-        <p className="text-zinc-400">{game.description || 'No description available.'}</p>
+        <p className="text-content-muted">{game.description || 'No description available.'}</p>
       </section>
     </main>
   )

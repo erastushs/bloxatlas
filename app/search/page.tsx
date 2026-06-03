@@ -17,7 +17,7 @@ export default function SearchPage() {
     <main className="mx-auto max-w-7xl p-6">
       <h1 className="mb-6 text-3xl font-bold">Search Results</h1>
 
-      <p className="mb-6 text-zinc-400">Query: {query}</p>
+      <p className="mb-6 text-content-muted">Query: {query}</p>
 
       {games.length > 0 ? (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -33,10 +33,10 @@ export default function SearchPage() {
           ))}
         </div>
       ) : (
-        <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-10 text-center">
+        <div className="rounded-card border border-border-default bg-surface shadow-card p-10 text-center">
           <h2 className="text-xl font-semibold">No games found</h2>
 
-          <p className="mt-2 text-zinc-400">Try another search keyword.</p>
+          <p className="mt-2 text-content-muted">Try another search keyword.</p>
         </div>
       )}
     </main>

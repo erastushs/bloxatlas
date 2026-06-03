@@ -14,13 +14,13 @@ type Props = {
 const sizeStyles = {
   sm: {
     mark: 32,
-    markClassName: 'rounded-md',
+    markClassName: 'rounded-control',
     nameClassName: 'text-sm',
     taglineClassName: 'text-xs',
   },
   md: {
     mark: 36,
-    markClassName: 'rounded-lg',
+    markClassName: 'rounded-control',
     nameClassName: 'text-xl',
     taglineClassName: 'text-xs',
   },
@@ -44,8 +44,8 @@ export default function BrandLogo({ variant = 'lockup', size = 'md', priority = 
 
       {showText ? (
         <div>
-          <p className={`${styles.nameClassName} font-bold leading-tight text-white`}>{siteConfig.name}</p>
-          {showTagline ? <p className={`${styles.taglineClassName} mt-1 font-medium text-cyan-400`}>{siteConfig.tagline}</p> : null}
+          <p className={`${styles.nameClassName} font-bold leading-tight text-content`}>{siteConfig.name}</p>
+          {showTagline ? <p className={`${styles.taglineClassName} mt-1 font-medium text-brand`}>{siteConfig.tagline}</p> : null}
         </div>
       ) : null}
     </div>

@@ -24,14 +24,14 @@ export default function SearchBar() {
         placeholder="Search Roblox games..."
         className="
           w-full
-          rounded-xl
+          rounded-card
           border
-          border-zinc-800
-          bg-zinc-900
+          border-border-default
+          bg-surface
           px-4
           py-3
           outline-none
-          focus:border-cyan-500
+          focus:border-brand
         "
       />
     </form>

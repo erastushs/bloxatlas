@@ -8,7 +8,7 @@ export default function HomePage() {
       <section className="text-center">
         <h1 className="text-5xl font-bold">Explore Roblox Through Data</h1>
 
-        <p className="mt-4 text-zinc-400">Discover trending games, player activity, growth metrics, and more.</p>
+        <p className="mt-4 text-content-muted">Discover trending games, player activity, growth metrics, and more.</p>
 
         <SearchBar />
       </section>

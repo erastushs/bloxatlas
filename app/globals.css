@@ -14,7 +14,9 @@
   --color-brand-strong: #0891b2;
   --color-positive: #34d399;
   --color-danger: #fca5a5;
-  --radius-card: 0.75rem;
+  --color-danger-surface: rgb(127 29 29 / 0.2);
+  --color-danger-border: #450a0a;
+  --radius-card: 0.5rem;
   --radius-control: 0.5rem;
   --shadow-card: 0 18px 45px rgb(0 0 0 / 0.24);
   --focus-ring: 0 0 0 3px rgb(6 182 212 / 0.24);
@@ -34,6 +36,8 @@
   --color-brand-strong: var(--color-brand-strong);
   --color-positive: var(--color-positive);
   --color-danger: var(--color-danger);
+  --color-danger-surface: var(--color-danger-surface);
+  --color-danger-border: var(--color-danger-border);
   --radius-card: var(--radius-card);
   --radius-control: var(--radius-control);
   --shadow-card: var(--shadow-card);
@@ -62,4 +66,5 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-brand);
   outline-offset: 2px;
+  box-shadow: var(--focus-ring);
 }
