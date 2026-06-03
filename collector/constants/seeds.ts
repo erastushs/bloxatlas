@@ -1,6 +1,6 @@
 export const seedQueries = [
   // --- Game Populer / Spesifik (Tren & Klasik) ---
-  /*'blox fruits',
+  'blox fruits',
   'grow a garden',
   'dead rails',
   'blue lock rivals',
@@ -31,7 +31,7 @@ export const seedQueries = [
   'survival',
   'roleplay',
   'school',
-  'pets',*/
+  'pets',
 
   // --- Perluasan Kategori: Gameplay & Mekanik ---
   'clicker',

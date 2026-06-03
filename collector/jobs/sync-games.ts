@@ -10,7 +10,7 @@ export async function syncGames() {
 
     const games = await searchGames(query)
 
-    for (const search of games.slice(0, 40)) {
+    for (const search of games.slice(0, 2)) {
       if (!search?.universeId) {
         continue
       }
