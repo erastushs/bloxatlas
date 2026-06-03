@@ -84,7 +84,7 @@ docs/
 [x] Implement Roblox Source Layer
 [x] Save First Real Game To Supabase
 [x] Sync Multiple Games
-[ ] Snapshot Collection
+[x] Snapshot Collection
 [ ] Automated Scheduler
 
 ### M6 - Discovery
