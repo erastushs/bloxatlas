@@ -39,6 +39,8 @@ docs/
 
 ## Roadmap
 
+## Roadmap
+
 ### M1 - Foundation ✅
 
 - [x] Next.js Setup
@@ -63,10 +65,9 @@ docs/
 - [x] Snapshots Table
 - [x] Homepage Analytics
 - [x] Game Stats API
-- [x] Growth API
 - [x] Historical Data Foundation
 
-### M4 - Polish MVP (Current)
+### M4 - MVP Polish ✅
 
 - [x] Fix Thumbnail System
 - [x] Improve Game Detail Page
@@ -74,35 +75,41 @@ docs/
 - [x] Add Empty States
 - [-] Loading Skeletons (Deferred)
 
-### M5 - Data Collection System
+### M5 - Data Collection System ✅
 
-[x] Validate Search Source
-[x] Validate Universe Lookup
-[x] Validate Statistics Endpoint
-[x] Validate Thumbnail Endpoint
-[x] Validate Full Pipeline
-[x] Implement Roblox Source Layer
-[x] Save First Real Game To Supabase
-[x] Sync Multiple Games
-[x] Snapshot Collection
-[x] Collector Runner
-[x] Refresh Games During Snapshot
-[-] Automated Scheduler (Deferred)
+- [x] Validate Search Source
+- [x] Validate Universe Lookup
+- [x] Validate Statistics Endpoint
+- [x] Validate Thumbnail Endpoint
+- [x] Validate Full Pipeline
+- [x] Implement Roblox Source Layer
+- [x] Save First Real Game To Supabase
+- [x] Sync Multiple Games
+- [x] Massive Game Discovery
+- [x] Snapshot Collection
+- [x] Collector Runner
+- [x] Refresh Games During Snapshot
+- [x] 1600+ Games Indexed
+- [x] 1800+ Snapshots Collected
+- [-] Automated Scheduler (Planned for Release)
 
-### M6 - Discovery
+### M6 - Analytics & Rankings (Current)
 
+- [x] Growth API
+- [ ] Historical Charts
 - [ ] Popular Games Ranking
 - [ ] Trending Games
 - [ ] Fastest Growing Games
-- [ ] Recently Updated
 - [ ] Top Active Games
+- [ ] Recently Updated Games
 
-### M7 - Advanced Analytics
+### M7 - Discovery
 
-- [ ] Historical Charts
-- [ ] Growth Leaderboard
-- [ ] Trending Algorithm
-- [ ] Favorites Tracking
+- [ ] Genre System
+- [ ] Category Pages
+- [ ] Similar Games
+- [ ] Creator Profiles
+- [ ] Advanced Search Filters
 
 ### M8 - Public API
 
@@ -111,14 +118,20 @@ docs/
 - [ ] Rate Limiting
 - [ ] API Keys
 
----
+### M9 - Release Preparation
 
-## Current Milestone
+- [ ] SEO Optimization
+- [ ] Sitemap
+- [ ] Robots.txt
+- [ ] Error Monitoring
+- [ ] Production Environment Validation
+- [ ] Vercel Cron Scheduler
 
-M5 - Data Collection System
+### M10 - Production Release
 
-Current Task:
-Research Roblox Data Sources
+- [ ] Deploy to Vercel
+- [ ] Enable Automated Collection
+- [ ] Public Launch
 
 ---
 

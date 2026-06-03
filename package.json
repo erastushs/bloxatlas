@@ -210,6 +210,7 @@
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-is": "^16.13.1",
+    "recharts": "^3.8.1",
     "reflect.getprototypeof": "^1.0.10",
     "regexp.prototype.flags": "^1.5.4",
     "resolve": "^2.0.0-next.7",
