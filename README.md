@@ -112,7 +112,7 @@ docs/
 - [x] Color System
 - [x] Typography System
 - [x] Reusable UI Components
-- [ ] Card Variants
+- [-] Card Variants (later)
 - [ ] Loading Skeletons
 - [ ] Empty States
 - [ ] Error States
