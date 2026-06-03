@@ -108,7 +108,7 @@ docs/
 - [x] Brand Identity
 - [x] Final Logo System
 - [x] Favicon
-- [ ] Design Tokens
+- [x] Design Tokens
 - [ ] Color System
 - [ ] Typography System
 - [ ] Reusable UI Components
