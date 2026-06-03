@@ -98,7 +98,7 @@ docs/
 - [x] Growth API
 - [x] Historical Charts
 - [x] Popular Games Ranking
-- [ ] Trending Games
+- [x] Trending Games
 - [ ] Fastest Growing Games
 - [ ] Top Active Games
 - [ ] Recently Updated Games
