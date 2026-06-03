@@ -15,8 +15,16 @@ export const metadata: Metadata = {
   applicationName: siteConfig.name,
   keywords: siteConfig.keywords,
   icons: {
-    icon: siteConfig.brand.favicon,
-    apple: siteConfig.brand.icon,
+    icon: [
+      {
+        url: '/favicon.ico',
+      },
+      {
+        url: '/icon.png',
+        type: 'image/png',
+      },
+    ],
+    apple: '/apple-icon.png',
   },
   openGraph: {
     title: siteConfig.name,
