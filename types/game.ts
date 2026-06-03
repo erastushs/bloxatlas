@@ -23,3 +23,14 @@ export interface TrendingGame extends Game {
   measuredFrom: string
   measuredTo: string
 }
+
+export interface FastestGrowingGame extends Game {
+  rank: number
+  playerDelta: number
+  visitDelta: number
+  growthPercent: number
+  growthScore: number
+  snapshotCount: number
+  measuredFrom: string
+  measuredTo: string
+}

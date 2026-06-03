@@ -8,6 +8,10 @@ export const navigation = [
     href: '/trending',
   },
   {
+    name: 'Growth',
+    href: '/fastest-growing',
+  },
+  {
     name: 'Search',
     href: '/search',
   },

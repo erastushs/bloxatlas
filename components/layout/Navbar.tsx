@@ -8,6 +8,7 @@ export default function Navbar() {
         <nav className="flex gap-6 text-sm text-zinc-400">
           <Link href="/">Home</Link>
           <Link href="/trending">Trending</Link>
+          <Link href="/fastest-growing">Growth</Link>
           <Link href="/search">Search</Link>
         </nav>
       </div>
