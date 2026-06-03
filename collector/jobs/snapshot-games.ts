@@ -1,7 +1,7 @@
 import { supabase } from '../lib/supabase'
 import { getGameStats } from '../sources/roblox'
 
-async function snapshotGames() {
+export async function snapshotGames() {
   const { data: games, error } = await supabase.from('games').select('*')
 
   if (error) {
@@ -29,5 +29,3 @@ async function snapshotGames() {
 
   console.log('Done.')
 }
-
-snapshotGames().catch(console.error)

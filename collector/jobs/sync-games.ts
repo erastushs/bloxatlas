@@ -4,7 +4,7 @@ import { seedQueries } from '../constants/seeds'
 
 import { searchGame, getGameStats, getGameThumbnail } from '../sources/roblox'
 
-async function syncGames() {
+export async function syncGames() {
   for (const query of seedQueries) {
     console.log(`Searching: ${query}`)
 
@@ -52,5 +52,3 @@ async function syncGames() {
 
   console.log('Done.')
 }
-
-syncGames().catch(console.error)

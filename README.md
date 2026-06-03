@@ -85,6 +85,7 @@ docs/
 [x] Save First Real Game To Supabase
 [x] Sync Multiple Games
 [x] Snapshot Collection
+[x] Collector Runner
 [ ] Automated Scheduler
 
 ### M6 - Discovery
