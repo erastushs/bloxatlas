@@ -103,7 +103,35 @@ docs/
 - [x] Top Active Games
 - [x] Recently Updated Games
 
-### M7 - Discovery
+### M7 - UI/UX Foundation
+
+- [ ] Brand Identity
+- [ ] Final Logo System
+- [ ] Favicon
+- [ ] Design Tokens
+- [ ] Color System
+- [ ] Typography System
+- [ ] Reusable UI Components
+- [ ] Card Variants
+- [ ] Loading Skeletons
+- [ ] Empty States
+- [ ] Error States
+- [ ] Dark Theme Refinement
+
+### M8 - Responsive & Performance
+
+- [ ] Mobile Navigation
+- [ ] Mobile Homepage
+- [ ] Mobile Rankings
+- [ ] Mobile Search
+- [ ] Tablet Optimization
+- [ ] Responsive Charts
+- [ ] Image Optimization
+- [ ] Route Prefetching
+- [ ] Core Web Vitals Optimization
+- [ ] Lighthouse 90+
+
+### M9 - Discovery Features
 
 - [ ] Genre System
 - [ ] Category Pages
@@ -111,23 +139,25 @@ docs/
 - [ ] Creator Profiles
 - [ ] Advanced Search Filters
 
-### M8 - Public API
+### M10 - Public API
 
 - [ ] API Documentation
 - [ ] Public Endpoints
 - [ ] Rate Limiting
 - [ ] API Keys
 
-### M9 - Release Preparation
+### M11 - SEO & Release Preparation
 
 - [ ] SEO Optimization
 - [ ] Sitemap
 - [ ] Robots.txt
+- [ ] Open Graph Images
+- [ ] Structured Data
 - [ ] Error Monitoring
 - [ ] Production Environment Validation
 - [ ] Vercel Cron Scheduler
 
-### M10 - Production Release
+### M12 - Production Release
 
 - [ ] Deploy to Vercel
 - [ ] Enable Automated Collection
