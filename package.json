@@ -55,6 +55,7 @@
     "define-properties": "^1.2.1",
     "detect-libc": "^2.1.2",
     "doctrine": "^2.1.0",
+    "dotenv": "^17.4.2",
     "dunder-proto": "^1.0.1",
     "electron-to-chromium": "^1.5.364",
     "emoji-regex": "^9.2.2",

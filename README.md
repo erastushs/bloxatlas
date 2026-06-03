@@ -74,18 +74,19 @@ docs/
 - [x] Add Empty States
 - [-] Loading Skeletons (Deferred)
 
-### M5 - M5 - Data Collection System
+### M5 - Data Collection System
 
 [x] Validate Search Source
 [x] Validate Universe Lookup
 [x] Validate Statistics Endpoint
 [x] Validate Thumbnail Endpoint
 [x] Validate Full Pipeline
+[x] Implement Roblox Source Layer
+[x] Save First Real Game To Supabase
 
-[ ] Implement Roblox Source Layer
-[ ] Build Sync Job
-[ ] Save Games To Supabase
+[ ] Sync Multiple Games
 [ ] Snapshot Collection
+[ ] Automated Scheduler
 
 ### M6 - Discovery
 
