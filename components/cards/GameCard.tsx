@@ -6,10 +6,11 @@ type Props = {
   name: string
   creator: string
   playing: number
+  visits?: number
   thumbnail?: string
 }
 
-export default function GameCard({ id, name, creator, playing, thumbnail }: Props) {
+export default function GameCard({ id, name, creator, playing, visits, thumbnail }: Props) {
   return (
     <Link href={`/game/${id}`}>
       <div className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900 transition hover:border-cyan-500">
@@ -28,7 +29,10 @@ export default function GameCard({ id, name, creator, playing, thumbnail }: Prop
 
           <p className="mt-1 text-sm text-zinc-400">{creator}</p>
 
-          <p className="mt-3 text-cyan-400">{playing.toLocaleString()} Playing</p>
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+            <p className="text-cyan-400">{playing.toLocaleString()} Playing</p>
+            {visits !== undefined ? <p className="text-zinc-500">{visits.toLocaleString()} Visits</p> : null}
+          </div>
         </div>
       </div>
     </Link>

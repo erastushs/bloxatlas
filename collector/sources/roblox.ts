@@ -1,9 +1,13 @@
+type RobloxSearchGroup = {
+  contents?: unknown[]
+}
+
 export async function searchGames(query: string) {
   const response = await fetch(
     `https://apis.roblox.com/search-api/omni-search?urlLocale=en_us&searchQuery=${encodeURIComponent(query)}&pageToken=&sessionId=test&pageType=all`,
   )
   const data = await response.json()
-  return data.searchResults.flatMap((group: any) => group.contents ?? [])
+  return data.searchResults.flatMap((group: RobloxSearchGroup) => group.contents ?? [])
 }
 
 export async function getGameStats(universeId: number) {

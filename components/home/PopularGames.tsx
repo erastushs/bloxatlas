@@ -2,30 +2,66 @@
 
 import GameCard from '@/components/cards/GameCard'
 import { usePopularGames } from '@/hooks/usePopularGames'
-import type { Game } from '@/types/game'
 
 export default function PopularGames() {
-  const { games } = usePopularGames()
+  const { games, isLoading, error } = usePopularGames()
 
   return (
     <section className="mt-20">
-      <h2 className="mb-6 text-3xl font-bold">Popular Games</h2>
+      <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-wide text-cyan-400">Live Ranking</p>
+          <h2 className="mt-1 text-3xl font-bold">Popular Games</h2>
+        </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {games.map((game: Game, index: number) => (
-          <div key={game.id}>
-            <div className="mb-2 text-sm font-semibold text-cyan-400">#{index + 1}</div>
-
-            <GameCard
-              id={game.id}
-              name={game.name}
-              creator={game.creator}
-              playing={game.playing}
-              thumbnail={game.thumbnail}
-            />
-          </div>
-        ))}
+        <p className="text-sm text-zinc-400">Ranked by active players, with visits as tie-breaker.</p>
       </div>
+
+      {isLoading ? (
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <div key={index} className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900">
+              <div className="aspect-video animate-pulse bg-zinc-800" />
+              <div className="space-y-3 p-4">
+                <div className="h-4 w-3/4 animate-pulse rounded bg-zinc-800" />
+                <div className="h-3 w-1/2 animate-pulse rounded bg-zinc-800" />
+                <div className="h-3 w-2/3 animate-pulse rounded bg-zinc-800" />
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : null}
+
+      {!isLoading && error ? (
+        <div className="rounded-xl border border-red-950 bg-red-950/20 p-6 text-sm text-red-200">{error}</div>
+      ) : null}
+
+      {!isLoading && !error && games.length === 0 ? (
+        <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6 text-sm text-zinc-400">
+          No popular games have been indexed yet.
+        </div>
+      ) : null}
+
+      {!isLoading && !error && games.length > 0 ? (
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {games.map((game) => (
+            <div key={game.id} className="relative">
+              <div className="absolute left-3 top-3 z-10 rounded-md border border-zinc-700 bg-zinc-950/90 px-2 py-1 text-sm font-semibold text-cyan-300">
+                #{game.rank}
+              </div>
+
+              <GameCard
+                id={game.id}
+                name={game.name}
+                creator={game.creator}
+                playing={game.playing}
+                visits={game.visits}
+                thumbnail={game.thumbnail}
+              />
+            </div>
+          ))}
+        </div>
+      ) : null}
     </section>
   )
 }

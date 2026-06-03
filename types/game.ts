@@ -7,3 +7,8 @@ export interface Game {
   description?: string
   thumbnail?: string
 }
+
+export interface PopularGame extends Game {
+  rank: number
+  popularityScore: number
+}
