@@ -1,12 +1,12 @@
 {
   "crons": [
     {
-      "path": "/api/cron/snapshot",
+      "path": "/api/cron/sync",
       "schedule": "0 0 * * *"
     },
     {
-      "path": "/api/cron/sync",
-      "schedule": "0 0 * * *"
+      "path": "/api/cron/snapshot",
+      "schedule": "30 0 * * *"
     }
   ]
 }
