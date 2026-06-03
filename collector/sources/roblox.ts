@@ -1,11 +1,9 @@
-export async function searchGame(query: string) {
+export async function searchGames(query: string) {
   const response = await fetch(
     `https://apis.roblox.com/search-api/omni-search?urlLocale=en_us&searchQuery=${encodeURIComponent(query)}&pageToken=&sessionId=test&pageType=all`,
   )
-
   const data = await response.json()
-
-  return data.searchResults?.[0]?.contents?.[0]
+  return data.searchResults.flatMap((group: any) => group.contents ?? [])
 }
 
 export async function getGameStats(universeId: number) {

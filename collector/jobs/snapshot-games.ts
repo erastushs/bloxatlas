@@ -10,6 +10,10 @@ export async function snapshotGames() {
 
   for (const game of games) {
     const stats = await getGameStats(game.universe_id)
+    if (!stats) {
+      console.log(`Skipped snapshot: ${game.name}`)
+      continue
+    }
     const { error: updateError } = await supabase
       .from('games')
       .update({
@@ -43,4 +47,3 @@ export async function snapshotGames() {
 
   console.log('Done.')
 }
-snapshotGames().catch(console.error)

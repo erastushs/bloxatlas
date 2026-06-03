@@ -86,6 +86,7 @@ docs/
 [x] Sync Multiple Games
 [x] Snapshot Collection
 [x] Collector Runner
+[x] Refresh Games During Snapshot
 [-] Automated Scheduler (Deferred)
 
 ### M6 - Discovery

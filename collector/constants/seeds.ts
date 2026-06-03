@@ -1,1 +1,22 @@
-export const seedQueries = ['blox fruits', 'grow a garden', 'dead rails', 'blue lock rivals', 'dress to impress']
+export const seedQueries = [
+  'blox fruits',
+  'grow a garden',
+  'dead rails',
+  'blue lock rivals',
+  'dress to impress',
+
+  'anime',
+  'simulator',
+  'tycoon',
+  'obby',
+  'horror',
+  'tower defense',
+  'fighting',
+  'battle',
+  'car',
+  'driving',
+  'survival',
+  'roleplay',
+  'school',
+  'pets',
+]
