@@ -83,8 +83,7 @@ docs/
 [x] Validate Full Pipeline
 [x] Implement Roblox Source Layer
 [x] Save First Real Game To Supabase
-
-[ ] Sync Multiple Games
+[x] Sync Multiple Games
 [ ] Snapshot Collection
 [ ] Automated Scheduler
 
