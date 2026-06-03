@@ -15,6 +15,12 @@ export default async function GamePage({ params }: Props) {
 
   const data = await response.json()
 
+  const growthResponse = await fetch(`http://localhost:3000/api/game/${id}/growth`, {
+    cache: 'no-store',
+  })
+
+  const growthData = await growthResponse.json()
+
   const game = data.game
 
   return (
@@ -42,6 +48,7 @@ export default async function GamePage({ params }: Props) {
         <StatCard title="Visits" value={game.visits.toLocaleString()} />
 
         <StatCard title="Creator" value={game.creator} />
+        <pre>{JSON.stringify(growthData, null, 2)}</pre>
       </div>
 
       <section className="mt-10">

@@ -22,3 +22,13 @@ export async function getGameGrowth(gameId: number) {
 
   return data
 }
+export async function getGrowth(gameId: number) {
+  const response = await fetch(`/api/game/${gameId}/growth`)
+
+  const data = await response.json()
+  return data.map((item) => ({
+    ...item,
+    label: new Date(item.created_at).toLocaleDateString(),
+  }))
+  return data.growth
+}
