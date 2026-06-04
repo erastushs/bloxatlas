@@ -37,10 +37,6 @@ docs/
 
 ## Roadmap
 
-## Roadmap
-
-## Roadmap
-
 ### M1 - Foundation ✅
 
 - [x] Next.js Setup
@@ -73,27 +69,21 @@ docs/
 - [x] Improve Game Detail Page
 - [x] Add Footer
 - [x] Add Empty States
-- [-] Loading Skeletons (Deferred)
+- [x] Loading Skeletons
 
 ### M5 - Data Collection System ✅
 
-- [x] Validate Search Source
-- [x] Validate Universe Lookup
-- [x] Validate Statistics Endpoint
-- [x] Validate Thumbnail Endpoint
-- [x] Validate Full Pipeline
-- [x] Implement Roblox Source Layer
-- [x] Save First Real Game To Supabase
-- [x] Sync Multiple Games
-- [x] Massive Game Discovery
+- [x] Roblox Source Layer
+- [x] Game Discovery
 - [x] Snapshot Collection
 - [x] Collector Runner
+- [x] Collector Metrics
+- [x] Collector Pagination
 - [x] Refresh Games During Snapshot
-- [x] 1600+ Games Indexed
-- [x] 1800+ Snapshots Collected
-- [-] Automated Scheduler (Planned for Release)
+- [x] 2000+ Games Indexed
+- [x] 4000+ Snapshots Collected
 
-### M6 - Analytics & Rankings (Current)
+### M6 - Analytics & Rankings ✅
 
 - [x] Growth API
 - [x] Historical Charts
@@ -102,6 +92,15 @@ docs/
 - [x] Fastest Growing Games
 - [x] Top Active Games
 - [x] Recently Updated Games
+
+### M6.5 - Infrastructure & Operations
+
+- [x] Production Database
+- [x] Vercel Deployment
+- [x] Vercel Cron Setup
+- [x] Cron Verification
+- [ ] Collector Optimization
+- [ ] Production Monitoring
 
 ### M7 - UI/UX Foundation
 
@@ -112,11 +111,11 @@ docs/
 - [x] Color System
 - [x] Typography System
 - [x] Reusable UI Components
-- [-] Card Variants (later)
 - [x] Loading Skeletons
 - [x] Empty States
 - [x] Error States
 - [ ] Dark Theme Refinement
+- [ ] Card Variants
 
 ### M8 - Responsive & Performance
 
@@ -148,19 +147,17 @@ docs/
 
 ### M11 - SEO & Release Preparation
 
-- [ ] SEO Optimization
+- [ ] Metadata Optimization
 - [ ] Sitemap
 - [ ] Robots.txt
 - [ ] Open Graph Images
 - [ ] Structured Data
 - [ ] Error Monitoring
-- [ ] Production Environment Validation
-- [ ] Vercel Cron Scheduler
 
-### M12 - Production Release
+### M12 - Public Launch
 
-- [ ] Deploy to Vercel
-- [ ] Enable Automated Collection
+- [x] Deploy to Vercel
+- [x] Enable Automated Collection
 - [ ] Public Launch
 
 ---
