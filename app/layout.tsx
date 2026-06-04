@@ -38,13 +38,19 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: siteConfig.brand.logo,
-        width: 1254,
-        height: 1254,
-        alt: siteConfig.name,
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'BloxAtlas',
       },
     ],
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: ['/og-image.png'],
   },
 }
 
