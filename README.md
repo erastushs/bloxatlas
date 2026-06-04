@@ -152,14 +152,18 @@ docs/
 - [x] Metadata Optimization
 - [x] Sitemap
 - [x] Robots.txt
+- [ ] Dynamic Game Sitemap
 - [ ] Open Graph Images
 - [ ] Structured Data
 - [ ] Error Monitoring
 
-### M12 - Public Launch
+### M12 - Launch Readiness
 
 - [x] Deploy to Vercel
 - [x] Enable Automated Collection
+- [ ] Mobile Ready
+- [ ] SEO Ready
+- [ ] Monitoring Ready
 - [ ] Public Launch
 
 ---
