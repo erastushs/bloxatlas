@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase'
 import { seedQueries } from '../constants/seeds'
 
 import { searchGames, getGamesStats, getGameThumbnails } from '../sources/roblox'
+import type { RobloxGameStats, RobloxThumbnail, RobloxSearchResult } from '../sources/types'
 
 export async function syncGames() {
   let savedCount = 0
@@ -16,21 +17,23 @@ export async function syncGames() {
 
     const games = await searchGames(query)
 
-    const candidates = games.slice(0, 20).filter((g) => g?.universeId)
+    const candidates = games.slice(0, 20).filter((g: RobloxSearchResult) => g?.universeId)
 
     if (candidates.length === 0) {
       continue
     }
 
-    const universeIds = candidates.map((g) => g.universeId)
+    const universeIds = candidates.map((g: RobloxSearchResult) => g.universeId)
 
     const statsList = await getGamesStats(universeIds)
 
     const thumbnails = await getGameThumbnails(universeIds)
 
-    const statsMap = new Map(statsList.map((stats) => [stats.id, stats]))
+    const statsMap = new Map<number, RobloxGameStats>(statsList.map((stats: RobloxGameStats) => [stats.id, stats]))
 
-    const thumbnailMap = new Map(thumbnails.map((thumb) => [thumb.targetId, thumb.imageUrl]))
+    const thumbnailMap = new Map<number, string>(
+      thumbnails.map((thumb: RobloxThumbnail) => [thumb.targetId, thumb.imageUrl]),
+    )
 
     const payloads = []
 

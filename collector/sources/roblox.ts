@@ -2,7 +2,9 @@ type RobloxSearchGroup = {
   contents?: unknown[]
 }
 
-export async function searchGames(query: string) {
+import type { RobloxSearchResult, RobloxGameStats, RobloxThumbnail } from './types'
+
+export async function searchGames(query: string): Promise<RobloxSearchResult[]> {
   const response = await fetch(
     `https://apis.roblox.com/search-api/omni-search?urlLocale=en_us&searchQuery=${encodeURIComponent(query)}&pageToken=&sessionId=test&pageType=all`,
   )
@@ -28,7 +30,7 @@ export async function getGameThumbnail(universeId: number) {
   return data.data?.[0]?.imageUrl ?? null
 }
 
-export async function getGameThumbnails(universeIds: number[]) {
+export async function getGameThumbnails(universeIds: number[]): Promise<RobloxThumbnail[]> {
   const response = await fetch(
     `https://thumbnails.roblox.com/v1/games/icons?universeIds=${universeIds.join(',')}&size=512x512&format=Png&isCircular=false`,
   )
@@ -41,7 +43,7 @@ export async function getGameThumbnails(universeIds: number[]) {
 
   return data.data ?? []
 }
-export async function getGamesStats(universeIds: number[]) {
+export async function getGamesStats(universeIds: number[]): Promise<RobloxGameStats[]> {
   const response = await fetch(`https://games.roblox.com/v1/games?universeIds=${universeIds.join(',')}`)
 
   if (response.status === 429) {
