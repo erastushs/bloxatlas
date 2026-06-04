@@ -16,7 +16,17 @@ export default function GameCard({ id, name, creator, playing, visits, thumbnail
       <div className="overflow-hidden rounded-card border border-border-default bg-surface shadow-card transition hover:border-brand">
         <div className="relative aspect-video">
           {thumbnail ? (
-            <Image src={thumbnail} alt={name} fill className="object-cover" />
+            <Image
+              src={thumbnail}
+              alt={name}
+              fill
+              sizes="
+    (max-width: 768px) 100vw,
+    (max-width: 1280px) 50vw,
+    33vw
+  "
+              className="object-cover"
+            />
           ) : (
             <div className="flex h-full items-center justify-center bg-surface-muted">
               <span className="text-sm text-content-subtle">Roblox Game</span>

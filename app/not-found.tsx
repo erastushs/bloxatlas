@@ -1,10 +1,15 @@
-import Container from '@/components/ui/Container'
+import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <Container as="main" className="py-12">
-      <h1 className="type-page-title">404</h1>
-      <p className="mt-3 text-content-muted">Page not found</p>
-    </Container>
+    <main className="flex min-h-[60vh] flex-col items-center justify-center px-6 text-center">
+      <h1 className="type-page-title">Page Not Found</h1>
+
+      <p className="mt-4 text-content-muted">The page you requested does not exist.</p>
+
+      <Link href="/" className="mt-6 rounded-control bg-brand px-4 py-2 text-black font-semibold">
+        Back Home
+      </Link>
+    </main>
   )
 }
