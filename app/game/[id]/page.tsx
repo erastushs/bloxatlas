@@ -3,11 +3,34 @@ import Image from 'next/image'
 import StatCard from '@/components/cards/StatCard'
 import PlayerChart from '@/components/charts/PlayerChart'
 import Container from '@/components/ui/Container'
+import { Metadata } from 'next'
 
 type Props = {
   params: Promise<{
     id: string
   }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
+
+  const response = await fetch(`${baseUrl}/api/game/${id}`, {
+    cache: 'no-store',
+  })
+
+  const data = await response.json()
+  const game = data.game
+
+  return {
+    title: game.name,
+    description: game.description,
+    openGraph: {
+      title: game.name,
+      description: game.description,
+      images: game.thumbnail ? [game.thumbnail] : [],
+    },
+  }
 }
 
 export default async function GamePage({ params }: Props) {
@@ -28,8 +51,27 @@ export default async function GamePage({ params }: Props) {
 
   const game = data.game
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: game.name,
+    description: game.description,
+    image: game.thumbnail,
+    url: `${baseUrl}/game/${game.id}`,
+    author: {
+      '@type': 'Person',
+      name: game.creator,
+    },
+  }
+
   return (
     <Container as="main" size="md" className="py-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
       <div className="mb-8 overflow-hidden rounded-card border border-border-default">
         {game.thumbnail ? (
           <div className="relative aspect-[3/1]">
