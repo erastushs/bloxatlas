@@ -2,32 +2,47 @@ import { supabase } from '../lib/supabase'
 
 import { seedQueries } from '../constants/seeds'
 
-import { searchGames, getGameStats, getGameThumbnail } from '../sources/roblox'
+import { searchGames, getGamesStats, getGameThumbnails } from '../sources/roblox'
 
 export async function syncGames() {
   let savedCount = 0
   let skippedCount = 0
+
+  function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms))
+  }
   for (const query of seedQueries) {
     console.log(`Searching: ${query}`)
 
     const games = await searchGames(query)
 
-    for (const search of games.slice(0, 1)) {
-      if (!search?.universeId) {
-        skippedCount++
-        continue
-      }
+    const candidates = games.slice(0, 20).filter((g) => g?.universeId)
 
-      const stats = await getGameStats(search.universeId)
+    if (candidates.length === 0) {
+      continue
+    }
+
+    const universeIds = candidates.map((g) => g.universeId)
+
+    const statsList = await getGamesStats(universeIds)
+
+    const thumbnails = await getGameThumbnails(universeIds)
+
+    const statsMap = new Map(statsList.map((stats) => [stats.id, stats]))
+
+    const thumbnailMap = new Map(thumbnails.map((thumb) => [thumb.targetId, thumb.imageUrl]))
+
+    const payloads = []
+
+    for (const search of candidates) {
+      const stats = statsMap.get(search.universeId)
 
       if (!stats) {
         skippedCount++
         continue
       }
 
-      const thumbnail = await getGameThumbnail(search.universeId)
-
-      const payload = {
+      payloads.push({
         universe_id: search.universeId,
         place_id: stats.rootPlaceId,
 
@@ -36,7 +51,7 @@ export async function syncGames() {
 
         description: stats.description,
 
-        thumbnail,
+        thumbnail: thumbnailMap.get(search.universeId) ?? null,
 
         playing: stats.playing,
         visits: stats.visits,
@@ -44,9 +59,11 @@ export async function syncGames() {
         favorites: stats.favoritedCount,
 
         last_synced_at: new Date().toISOString(),
-      }
+      })
+    }
 
-      const { error } = await supabase.from('games').upsert(payload, {
+    if (payloads.length > 0) {
+      const { error } = await supabase.from('games').upsert(payloads, {
         onConflict: 'universe_id',
       })
 
@@ -54,10 +71,14 @@ export async function syncGames() {
         console.error(error)
         continue
       }
-      savedCount++
-      console.log(`Saved: ${stats.name}`)
+
+      savedCount += payloads.length
+
+      console.log(`Saved: ${payloads.length} games`)
     }
   }
+  await sleep(1000)
+
   console.log('==========')
   console.log(`Saved Games: ${savedCount}`)
   console.log(`Skipped Games: ${skippedCount}`)

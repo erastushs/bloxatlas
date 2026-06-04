@@ -18,18 +18,6 @@ export async function getGameStats(universeId: number) {
   return data.data?.[0]
 }
 
-export async function getGamesStats(universeIds: number[]) {
-  const response = await fetch(`https://games.roblox.com/v1/games?universeIds=${universeIds.join(',')}`)
-
-  if (!response.ok) {
-    throw new Error(`Roblox API ${response.status}`)
-  }
-
-  const data = await response.json()
-
-  return data.data ?? []
-}
-
 export async function getGameThumbnail(universeId: number) {
   const response = await fetch(
     `https://thumbnails.roblox.com/v1/games/icons?universeIds=${universeId}&size=512x512&format=Png&isCircular=false`,
@@ -38,4 +26,33 @@ export async function getGameThumbnail(universeId: number) {
   const data = await response.json()
 
   return data.data?.[0]?.imageUrl ?? null
+}
+
+export async function getGameThumbnails(universeIds: number[]) {
+  const response = await fetch(
+    `https://thumbnails.roblox.com/v1/games/icons?universeIds=${universeIds.join(',')}&size=512x512&format=Png&isCircular=false`,
+  )
+
+  if (!response.ok) {
+    throw new Error(`Thumbnail API ${response.status}`)
+  }
+
+  const data = await response.json()
+
+  return data.data ?? []
+}
+export async function getGamesStats(universeIds: number[]) {
+  const response = await fetch(`https://games.roblox.com/v1/games?universeIds=${universeIds.join(',')}`)
+
+  if (response.status === 429) {
+    console.log('Rate limited. Waiting 5s...')
+
+    await new Promise((r) => setTimeout(r, 5000))
+
+    return getGamesStats(universeIds)
+  }
+
+  const data = await response.json()
+
+  return data.data ?? []
 }
