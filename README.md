@@ -121,7 +121,6 @@ docs/
 
 ### M8 - Responsive & Performance
 
-- [ ] Mobile Navigation
 - [ ] Mobile Homepage
 - [ ] Mobile Rankings
 - [ ] Mobile Search
@@ -131,6 +130,13 @@ docs/
 - [ ] Route Prefetching
 - [ ] Core Web Vitals Optimization
 - [ ] Lighthouse 90+
+
+## M8.1 Mobile Navigation
+
+[x] Mobile Navbar
+[x] Hamburger Menu
+[x] Hide Mobile Tagline
+[ ] Active Link State
 
 ### M9 - Discovery Features
 

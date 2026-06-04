@@ -16,13 +16,13 @@ const sizeStyles = {
     mark: 32,
     markClassName: 'rounded-control',
     nameClassName: 'text-sm',
-    taglineClassName: 'text-xs',
+    taglineClassName: 'text-xs hidden md:block',
   },
   md: {
     mark: 36,
     markClassName: 'rounded-control',
     nameClassName: 'text-xl',
-    taglineClassName: 'text-xs',
+    taglineClassName: 'text-xs hidden md:block',
   },
 }
 
@@ -45,7 +45,9 @@ export default function BrandLogo({ variant = 'lockup', size = 'md', priority = 
       {showText ? (
         <div>
           <p className={`${styles.nameClassName} font-bold leading-tight text-content`}>{siteConfig.name}</p>
-          {showTagline ? <p className={`${styles.taglineClassName} mt-1 font-medium text-brand`}>{siteConfig.tagline}</p> : null}
+          {showTagline ? (
+            <p className={`${styles.taglineClassName} mt-1 font-medium text-brand`}>{siteConfig.tagline}</p>
+          ) : null}
         </div>
       ) : null}
     </div>
