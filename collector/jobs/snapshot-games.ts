@@ -2,15 +2,36 @@ import { supabase } from '../lib/supabase'
 import { getGameStats } from '../sources/roblox'
 
 export async function snapshotGames() {
-  const { data: games, error } = await supabase.from('games').select('*')
+  let updatedCount = 0
+  let snapshotCount = 0
+  let skippedCount = 0
+  const allGames = []
 
-  if (error) {
-    throw error
+  let from = 0
+  const batchSize = 1000
+
+  while (true) {
+    const { data, error } = await supabase
+      .from('games')
+      .select('*')
+      .range(from, from + batchSize - 1)
+
+    if (error) {
+      throw error
+    }
+
+    allGames.push(...data)
+
+    if (data.length < batchSize) {
+      break
+    }
+    from += batchSize
   }
 
-  for (const game of games) {
+  for (const game of allGames) {
     const stats = await getGameStats(game.universe_id)
     if (!stats) {
+      skippedCount++
       console.log(`Skipped snapshot: ${game.name}`)
       continue
     }
@@ -41,9 +62,14 @@ export async function snapshotGames() {
       console.error(snapshotError)
       continue
     }
+    snapshotCount++
+    updatedCount++
     console.log(`Updated: ${game.name}`)
     console.log(`Snapshot: ${game.name}`)
   }
-
-  console.log('Done.')
+  console.log('==========')
+  console.log(`Games Updated: ${updatedCount}`)
+  console.log(`Snapshots Added: ${snapshotCount}`)
+  console.log(`Skipped: ${skippedCount}`)
+  console.log('==========')
 }

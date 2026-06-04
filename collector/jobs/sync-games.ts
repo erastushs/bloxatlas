@@ -5,19 +5,23 @@ import { seedQueries } from '../constants/seeds'
 import { searchGames, getGameStats, getGameThumbnail } from '../sources/roblox'
 
 export async function syncGames() {
+  let savedCount = 0
+  let skippedCount = 0
   for (const query of seedQueries) {
     console.log(`Searching: ${query}`)
 
     const games = await searchGames(query)
 
-    for (const search of games.slice(0, 2)) {
+    for (const search of games.slice(0, 1)) {
       if (!search?.universeId) {
+        skippedCount++
         continue
       }
 
       const stats = await getGameStats(search.universeId)
 
       if (!stats) {
+        skippedCount++
         continue
       }
 
@@ -50,10 +54,13 @@ export async function syncGames() {
         console.error(error)
         continue
       }
-
+      savedCount++
       console.log(`Saved: ${stats.name}`)
     }
   }
-
+  console.log('==========')
+  console.log(`Saved Games: ${savedCount}`)
+  console.log(`Skipped Games: ${skippedCount}`)
   console.log('Done.')
+  console.log('==========')
 }

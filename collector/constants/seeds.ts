@@ -1,15 +1,5 @@
 export const seedQueries = [
   // --- Game Populer / Spesifik (Tren & Klasik) ---
-  'blox fruits',
-  'grow a garden',
-  'dead rails',
-  'blue lock rivals',
-  'dress to impress',
-  'adopt me',
-  'brookhaven',
-  'psx',
-  'pet simulator 99',
-  'murder mystery 2',
   'bedwars',
   'shindo life',
   'blade ball',
