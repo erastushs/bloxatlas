@@ -138,6 +138,13 @@ docs/
 [x] Hide Mobile Tagline
 [ ] Active Link State
 
+## M8.2 Mobile Homepage
+
+[x] Responsive Typography
+[x] Better Hero Spacing
+[x] Better Content Width
+[x] Better Search Layout
+
 ### M9 - Discovery Features
 
 - [ ] Genre System

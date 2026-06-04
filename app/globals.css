@@ -76,24 +76,40 @@ body {
 
 @layer components {
   .type-display {
-    font-size: 3rem;
-    line-height: 1;
+    font-size: 2.25rem;
+    line-height: 1.05;
     font-weight: 700;
     letter-spacing: 0;
+  }
+
+  @media (min-width: 768px) {
+    .type-display {
+      font-size: 3.75rem;
+    }
   }
 
   .type-page-title {
-    font-size: 2.25rem;
-    line-height: 1.12;
+    font-size: 1.75rem;
+    line-height: 1.15;
     font-weight: 700;
-    letter-spacing: 0;
+  }
+
+  @media (min-width: 768px) {
+    .type-page-title {
+      font-size: 2.25rem;
+    }
   }
 
   .type-section-title {
-    font-size: 1.875rem;
+    font-size: 1.5rem;
     line-height: 1.2;
     font-weight: 700;
-    letter-spacing: 0;
+  }
+
+  @media (min-width: 768px) {
+    .type-section-title {
+      font-size: 1.875rem;
+    }
   }
 
   .type-card-title {
