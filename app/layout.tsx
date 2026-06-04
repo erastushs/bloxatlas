@@ -8,6 +8,9 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
+  verification: {
+    google: 'ad5gzxjAMZulKRjO2s8sKoXP1jCftvwP0LRfiLY7hd4',
+  },
   metadataBase: new URL(siteConfig.url),
   title: {
     default: `${siteConfig.name} - ${siteConfig.tagline}`,
@@ -48,7 +51,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <meta name="google-site-verification" content="ad5gzxjAMZulKRjO2s8sKoXP1jCftvwP0LRfiLY7hd4" />
       <body>
         <Navbar />
         {children}
