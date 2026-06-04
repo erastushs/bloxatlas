@@ -1,12 +1,23 @@
 import { supabase } from '../lib/supabase'
-import { getGameStats } from '../sources/roblox'
+import { getGamesStats } from '../sources/roblox'
+
+function chunkArray<T>(array: T[], size: number): T[][] {
+  const chunks: T[][] = []
+
+  for (let i = 0; i < array.length; i += size) {
+    chunks.push(array.slice(i, i + size))
+  }
+
+  return chunks
+}
 
 export async function snapshotGames() {
+  const snapshotsToInsert: Array<{ game_id: number; playing: number; visits: number; favorites: number }> = []
+  const allGames = []
+
+  let skippedCount = 0
   let updatedCount = 0
   let snapshotCount = 0
-  let skippedCount = 0
-  const snapshotsToInsert = []
-  const allGames = []
 
   let from = 0
   const batchSize = 1000
@@ -26,50 +37,90 @@ export async function snapshotGames() {
     if (data.length < batchSize) {
       break
     }
+
     from += batchSize
   }
 
-  for (const game of allGames) {
-    const stats = await getGameStats(game.universe_id)
-    if (!stats) {
-      skippedCount++
-      console.log(`Skipped snapshot: ${game.name}`)
+  console.log(`Games Loaded: ${allGames.length}`)
+
+  const gameChunks = chunkArray(allGames, 50)
+  const snapshotBatchSize = 500
+
+  for (const chunk of gameChunks) {
+    const universeIds = chunk.map((game) => game.universe_id)
+
+    let statsList = []
+
+    try {
+      statsList = await getGamesStats(universeIds)
+    } catch (error) {
+      console.error(`Chunk failed (${chunk.length} games):`, error)
+
+      skippedCount += chunk.length
       continue
     }
-    const { error: updateError } = await supabase
-      .from('games')
-      .update({
+
+    const statsMap = new Map<number, (typeof statsList)[number]>(statsList.map((stats) => [stats.id, stats]))
+
+    for (const game of chunk) {
+      const stats = statsMap.get(game.universe_id)
+
+      if (!stats) {
+        skippedCount++
+        continue
+      }
+
+      const { error: updateError } = await supabase
+        .from('games')
+        .update({
+          playing: stats.playing,
+          visits: stats.visits,
+          favorites: stats.favoritedCount,
+          last_synced_at: new Date().toISOString(),
+        })
+        .eq('id', game.id)
+
+      if (updateError) {
+        console.error(updateError)
+        continue
+      }
+
+      snapshotsToInsert.push({
+        game_id: game.id,
         playing: stats.playing,
         visits: stats.visits,
         favorites: stats.favoritedCount,
-
-        last_synced_at: new Date().toISOString(),
       })
-      .eq('id', game.id)
-    if (updateError) {
-      console.error(updateError)
-      continue
+
+      updatedCount++
+
+      if (snapshotsToInsert.length >= snapshotBatchSize) {
+        const { error: batchError } = await supabase.from('snapshots').insert(snapshotsToInsert)
+
+        if (!batchError) {
+          snapshotCount += snapshotsToInsert.length
+
+          snapshotsToInsert.length = 0
+        }
+      }
+    }
+    const percent = Math.round((updatedCount / allGames.length) * 100)
+
+    console.log(`Progress: ${updatedCount}/${allGames.length} (${percent}%)`)
+  }
+
+  if (snapshotsToInsert.length > 0) {
+    console.log(`Inserting ${snapshotsToInsert.length} remaining snapshots...`)
+
+    const { error: snapshotError } = await supabase.from('snapshots').insert(snapshotsToInsert)
+
+    if (snapshotError) {
+      throw snapshotError
     }
 
-    snapshotsToInsert.push({
-      game_id: game.id,
-      playing: stats.playing,
-      visits: stats.visits,
-      favorites: stats.favoritedCount,
-    })
-
-    snapshotCount++
-    updatedCount++
-    console.log(`Updated: ${game.name}`)
-    console.log(`Snapshot: ${game.name}`)
+    snapshotCount += snapshotsToInsert.length
   }
 
-  console.log(`Inserting ${snapshotsToInsert.length} snapshots...`)
-  const { error: snapshotError } = await supabase.from('snapshots').insert(snapshotsToInsert)
-
-  if (snapshotError) {
-    throw snapshotError
-  }
   console.log('==========')
   console.log(`Games Updated: ${updatedCount}`)
   console.log(`Snapshots Added: ${snapshotCount}`)

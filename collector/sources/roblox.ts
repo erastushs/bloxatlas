@@ -18,6 +18,18 @@ export async function getGameStats(universeId: number) {
   return data.data?.[0]
 }
 
+export async function getGamesStats(universeIds: number[]) {
+  const response = await fetch(`https://games.roblox.com/v1/games?universeIds=${universeIds.join(',')}`)
+
+  if (!response.ok) {
+    throw new Error(`Roblox API ${response.status}`)
+  }
+
+  const data = await response.json()
+
+  return data.data ?? []
+}
+
 export async function getGameThumbnail(universeId: number) {
   const response = await fetch(
     `https://thumbnails.roblox.com/v1/games/icons?universeIds=${universeId}&size=512x512&format=Png&isCircular=false`,
