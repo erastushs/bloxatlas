@@ -5,6 +5,7 @@ export async function snapshotGames() {
   let updatedCount = 0
   let snapshotCount = 0
   let skippedCount = 0
+  const snapshotsToInsert = []
   const allGames = []
 
   let from = 0
@@ -50,22 +51,24 @@ export async function snapshotGames() {
       continue
     }
 
-    const { error: snapshotError } = await supabase.from('snapshots').insert({
+    snapshotsToInsert.push({
       game_id: game.id,
-
       playing: stats.playing,
       visits: stats.visits,
       favorites: stats.favoritedCount,
     })
 
-    if (snapshotError) {
-      console.error(snapshotError)
-      continue
-    }
     snapshotCount++
     updatedCount++
     console.log(`Updated: ${game.name}`)
     console.log(`Snapshot: ${game.name}`)
+  }
+
+  console.log(`Inserting ${snapshotsToInsert.length} snapshots...`)
+  const { error: snapshotError } = await supabase.from('snapshots').insert(snapshotsToInsert)
+
+  if (snapshotError) {
+    throw snapshotError
   }
   console.log('==========')
   console.log(`Games Updated: ${updatedCount}`)
