@@ -141,7 +141,7 @@ docs/
 - [x] Robots.txt
 - [x] Dynamic Game Sitemap
 - [x] Structured Data
-- [ ] Open Graph Images
+- [x] Open Graph Images
 - [ ] Error Monitoring
 
 ### M12 - Launch Readiness
