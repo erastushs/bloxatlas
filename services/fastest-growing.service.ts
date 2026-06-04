@@ -1,8 +1,9 @@
 import { supabase } from '@/lib/supabase'
 import type { FastestGrowingGame, Game } from '@/types/game'
 
+import { loadAllSnapshots } from '@/lib/load-all-snapshots'
+
 const DEFAULT_FASTEST_GROWING_LIMIT = 12
-const SNAPSHOT_SCAN_LIMIT = 5000
 
 type SnapshotRow = {
   game_id: number
@@ -109,17 +110,9 @@ function toFastestGrowingGame(game: Game, candidate: GrowthCandidate, rank: numb
 }
 
 export async function getFastestGrowingGames(limit = DEFAULT_FASTEST_GROWING_LIMIT): Promise<FastestGrowingGame[]> {
-  const { data: snapshots, error: snapshotsError } = await supabase
-    .from('snapshots')
-    .select('game_id, playing, visits, created_at')
-    .order('created_at', { ascending: false })
-    .limit(SNAPSHOT_SCAN_LIMIT)
+  const snapshots = await loadAllSnapshots()
 
-  if (snapshotsError) {
-    throw snapshotsError
-  }
-
-  const candidates = getGrowthCandidates((snapshots ?? []) as SnapshotRow[]).slice(0, limit)
+  const candidates = getGrowthCandidates(snapshots).slice(0, limit)
   const gameIds = candidates.map((candidate) => candidate.gameId)
 
   if (gameIds.length === 0) {

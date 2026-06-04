@@ -1,8 +1,9 @@
 import { supabase } from '@/lib/supabase'
 import type { Game, TrendingGame } from '@/types/game'
 
+import { loadAllSnapshots } from '@/lib/load-all-snapshots'
+
 const DEFAULT_TRENDING_LIMIT = 12
-const SNAPSHOT_SCAN_LIMIT = 5000
 
 type SnapshotRow = {
   game_id: number
@@ -111,17 +112,10 @@ function toTrendingGame(game: Game, candidate: TrendCandidate, rank: number): Tr
 }
 
 export async function getTrendingGames(limit = DEFAULT_TRENDING_LIMIT): Promise<TrendingGame[]> {
-  const { data: snapshots, error: snapshotsError } = await supabase
-    .from('snapshots')
-    .select('game_id, playing, visits, created_at')
-    .order('created_at', { ascending: false })
-    .limit(SNAPSHOT_SCAN_LIMIT)
+  const snapshots = await loadAllSnapshots()
 
-  if (snapshotsError) {
-    throw snapshotsError
-  }
+  const candidates = getTrendCandidates(snapshots).slice(0, limit)
 
-  const candidates = getTrendCandidates((snapshots ?? []) as SnapshotRow[]).slice(0, limit)
   const gameIds = candidates.map((candidate) => candidate.gameId)
 
   if (gameIds.length === 0) {

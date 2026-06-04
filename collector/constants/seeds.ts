@@ -1,7 +1,7 @@
 export const seedQueries = [
   // --- Game Populer / Spesifik (Tren & Klasik) ---
   'bedwars',
-  'shindo life',
+  /*'shindo life',
   'blade ball',
   'royale high',
   'evade',
@@ -76,5 +76,5 @@ export const seedQueries = [
   'retro',
   'classic',
   'updated',
-  'beta',
+  'beta',*/
 ]
