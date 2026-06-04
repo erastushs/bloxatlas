@@ -149,8 +149,8 @@ docs/
 - [x] Deploy to Vercel
 - [x] Enable Automated Collection
 - [x] Mobile Ready
-- [ ] SEO Ready
-- [ ] Monitoring Ready
+- [x] SEO Ready
+- [x] Monitoring Ready
 - [ ] Public Launch
 
 ---
