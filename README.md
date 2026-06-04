@@ -152,7 +152,7 @@ docs/
 - [x] Metadata Optimization
 - [x] Sitemap
 - [x] Robots.txt
-- [ ] Dynamic Game Sitemap
+- [x] Dynamic Game Sitemap
 - [ ] Open Graph Images
 - [ ] Structured Data
 - [ ] Error Monitoring
