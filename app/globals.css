@@ -105,6 +105,12 @@ body {
 
   @media (min-width: 768px) {
     .type-display {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .type-display {
       font-size: 3.75rem;
     }
   }

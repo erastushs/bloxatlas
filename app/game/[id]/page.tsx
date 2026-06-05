@@ -91,7 +91,7 @@ export default async function GamePage({ params }: Props) {
       </header>
 
       <section>
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           <StatCard title="Active Players" value={game.playing.toLocaleString()} />
 
           <StatCard title="Visits" value={game.visits.toLocaleString()} />

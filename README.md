@@ -139,7 +139,7 @@ docs/
 - [x] Mobile Search
 - [x] Responsive Charts
 - [x] Image Optimization (Basic)
-- [ ] Tablet Optimization
+- [x] Tablet Optimization
 - [ ] Route Prefetching
 - [ ] Core Web Vitals Optimization
 - [ ] Lighthouse 90+

@@ -16,8 +16,8 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop */}
-        <div className="hidden items-center gap-6 md:flex">
-          <nav className="flex gap-6 text-sm text-content-muted">
+        <div className="hidden items-center gap-4 md:gap-6 lg:flex">
+          <nav className="flex gap-4 text-sm text-content-muted md:gap-6">
             {navigation.map((item) => (
               <Link key={item.href} href={item.href} className="transition hover:text-content">
                 {item.name}
@@ -28,7 +28,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile */}
-        <div className="flex items-center gap-3 md:hidden">
+        <div className="flex items-center gap-3 lg:hidden">
           <ThemeToggle />
           <button onClick={() => setOpen(!open)} className="text-content" aria-label="Open menu">
             ☰
@@ -36,7 +36,7 @@ export default function Navbar() {
         </div>
       </div>
       {open && (
-        <nav className="border-t border-border-default md:hidden">
+        <nav className="border-t border-border-default lg:hidden">
           <div className="flex flex-col px-4 py-3">
             {navigation.map((item) => (
               <Link key={item.href} href={item.href} className="py-3 text-content-muted" onClick={() => setOpen(false)}>

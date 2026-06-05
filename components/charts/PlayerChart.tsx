@@ -16,7 +16,7 @@ export default function PlayerChart({ data }: Props) {
         <LineChart data={data}>
           <XAxis dataKey="label" tick={{ fontSize: 12 }} />
 
-          <YAxis width={40} />
+          <YAxis width={60} />
           <Tooltip
             contentStyle={{
               backgroundColor: '#18181b',
