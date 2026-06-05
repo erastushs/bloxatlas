@@ -31,4 +31,8 @@ export const navigation = [
     name: 'Search',
     href: '/search',
   },
+  {
+    name: 'API Docs',
+    href: '/api/docs',
+  },
 ]
