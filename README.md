@@ -127,7 +127,7 @@ docs/
 - [x] Loading Skeletons
 - [x] Empty States
 - [x] Error States
-- [ ] Dark Theme Refinement
+- [x] Dark Theme Refinement
 - [ ] Card Variants
 
 ### M8 - Responsive & Performance

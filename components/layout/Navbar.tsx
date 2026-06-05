@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import BrandLogo from '@/components/brand/BrandLogo'
+import { ThemeToggle } from '@/components/layout/ThemeToggle'
 import { navigation } from '@/constants/navigation'
 import { useState } from 'react'
 
@@ -15,18 +16,24 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop */}
-        <nav className="hidden gap-6 text-sm text-content-muted md:flex">
-          {navigation.map((item) => (
-            <Link key={item.href} href={item.href} className="transition hover:text-content">
-              {item.name}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden items-center gap-6 md:flex">
+          <nav className="flex gap-6 text-sm text-content-muted">
+            {navigation.map((item) => (
+              <Link key={item.href} href={item.href} className="transition hover:text-content">
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+          <ThemeToggle />
+        </div>
 
         {/* Mobile */}
-        <button onClick={() => setOpen(!open)} className="text-content md:hidden" aria-label="Open menu">
-          ☰
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeToggle />
+          <button onClick={() => setOpen(!open)} className="text-content" aria-label="Open menu">
+            ☰
+          </button>
+        </div>
       </div>
       {open && (
         <nav className="border-t border-border-default md:hidden">
