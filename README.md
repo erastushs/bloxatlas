@@ -1,8 +1,8 @@
 # BloxAtlas
 
-BloxAtlas is a Roblox analytics and discovery platform for exploring games through live activity, growth signals, rankings, historical snapshots, and public API data.
+BloxAtlas is a Roblox analytics and discovery platform for exploring games through live activity, growth signals, rankings, historical snapshots, and a public API.
 
-Website: https://bloxatlas.vercel.app
+[bloxatlas.vercel.app](https://bloxatlas.vercel.app)
 
 ## Overview
 
@@ -233,8 +233,6 @@ npm run collector  # Run collector jobs
 
 ## Verification
 
-The publish UI release has been verified with:
-
 ```bash
 npm run lint
 npm run build
@@ -263,4 +261,4 @@ See [docs/changelog.md](docs/changelog.md) for release history.
 
 ## License
 
-ISC
+[Apache-2.0](LICENSE)
