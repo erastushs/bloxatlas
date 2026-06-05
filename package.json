@@ -292,8 +292,8 @@
     "url": "git+https://github.com/erastushs/bloxatlas.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Erastus HS",
+  "license": "Apache-2.0",
   "type": "module",
   "bugs": {
     "url": "https://github.com/erastushs/bloxatlas/issues"

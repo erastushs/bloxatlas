@@ -9,4 +9,11 @@ export const siteConfig = {
     favicon: '/branding/bloxatlas-favicon.png',
   },
   keywords: ['Roblox analytics', 'Roblox games', 'Roblox discovery', 'game rankings', 'BloxAtlas'],
+  links: {
+    github: 'https://github.com/erastushs/bloxatlas',
+  },
+  author: {
+    name: 'Erastus HS',
+    url: 'https://erastushs.netlify.app/',
+  },
 }
