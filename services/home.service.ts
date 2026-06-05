@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabase'
+import { getCachedOrFetch } from '@/lib/cache'
 import type { Game, PopularGame } from '@/types/game'
 
 const DEFAULT_POPULAR_GAMES_LIMIT = 9
@@ -12,16 +13,16 @@ function toPopularGame(game: Game, index: number): PopularGame {
 }
 
 export async function getPopularGames(limit = DEFAULT_POPULAR_GAMES_LIMIT): Promise<PopularGame[]> {
-  const { data, error } = await supabase
-    .from('games')
-    .select('id, name, creator, playing, visits, description, thumbnail')
-    .order('playing', { ascending: false })
-    .order('visits', { ascending: false })
-    .limit(limit)
+  return getCachedOrFetch(`popular:${limit}`, async () => {
+    const { data, error } = await supabase
+      .from('games')
+      .select('id, name, creator, playing, visits, description, thumbnail')
+      .order('playing', { ascending: false })
+      .order('visits', { ascending: false })
+      .limit(limit)
 
-  if (error) {
-    throw error
-  }
+    if (error) throw error
 
-  return (data ?? []).map((game, index) => toPopularGame(game, index))
+    return (data ?? []).map((game, index) => toPopularGame(game, index))
+  }, 30)
 }

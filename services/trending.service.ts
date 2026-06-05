@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabase'
+import { getCachedOrFetch } from '@/lib/cache'
 import type { Game, TrendingGame } from '@/types/game'
 
 import { loadAllSnapshots } from '@/lib/load-all-snapshots'
@@ -112,7 +113,8 @@ function toTrendingGame(game: Game, candidate: TrendCandidate, rank: number): Tr
 }
 
 export async function getTrendingGames(limit = DEFAULT_TRENDING_LIMIT): Promise<TrendingGame[]> {
-  const snapshots = await loadAllSnapshots()
+  return getCachedOrFetch(`trending:${limit}`, async () => {
+    const snapshots = await loadAllSnapshots()
 
   const candidates = getTrendCandidates(snapshots).slice(0, limit)
 
@@ -140,4 +142,5 @@ export async function getTrendingGames(limit = DEFAULT_TRENDING_LIMIT): Promise<
       return game ? toTrendingGame(game, candidate, index + 1) : null
     })
     .filter((game): game is TrendingGame => game !== null)
+  }, 60)
 }

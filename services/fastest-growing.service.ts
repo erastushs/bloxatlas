@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabase'
+import { getCachedOrFetch } from '@/lib/cache'
 import type { FastestGrowingGame, Game } from '@/types/game'
 
 import { loadAllSnapshots } from '@/lib/load-all-snapshots'
@@ -110,7 +111,8 @@ function toFastestGrowingGame(game: Game, candidate: GrowthCandidate, rank: numb
 }
 
 export async function getFastestGrowingGames(limit = DEFAULT_FASTEST_GROWING_LIMIT): Promise<FastestGrowingGame[]> {
-  const snapshots = await loadAllSnapshots()
+  return getCachedOrFetch(`fastest-growing:${limit}`, async () => {
+    const snapshots = await loadAllSnapshots()
 
   const candidates = getGrowthCandidates(snapshots).slice(0, limit)
   const gameIds = candidates.map((candidate) => candidate.gameId)
@@ -137,4 +139,5 @@ export async function getFastestGrowingGames(limit = DEFAULT_FASTEST_GROWING_LIM
       return game ? toFastestGrowingGame(game, candidate, index + 1) : null
     })
     .filter((game): game is FastestGrowingGame => game !== null)
+  }, 60)
 }

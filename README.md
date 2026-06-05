@@ -182,18 +182,17 @@ docs/
 
 ### M15 - Scale & Infrastructure
 
-- [ ] Upstash Redis
-- [ ] Cached Rankings
-- [ ] Cached Search
-- [ ] Background Queue
-- [ ] Multi-Source Collection
+- [x] Upstash Redis
+- [x] Cached Rankings
+- [x] Cached Search
+- [x] Background Queue
+- [x] Multi-Source Collection
 
 ---
 
 OTW
 
 1. Public Launch
-2. M15 - Scale & Infrastructure (Redis, Caching, Queues)
 
 ## Database
 
