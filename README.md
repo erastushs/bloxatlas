@@ -128,6 +128,7 @@ docs/
 - [x] Empty States
 - [x] Error States
 - [x] Dark Theme Refinement
+- [x] fix Search
 - [ ] Card Variants
 
 ### M8 - Responsive & Performance
