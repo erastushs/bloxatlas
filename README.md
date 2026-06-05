@@ -175,10 +175,10 @@ docs/
 
 ### M14 - Platform Features
 
-- [ ] Public API
-- [ ] API Documentation
-- [ ] API Rate Limiting
-- [ ] Developer Dashboard
+- [x] Public API
+- [x] API Documentation
+- [x] API Rate Limiting
+- [x] Developer Dashboard
 
 ### M15 - Scale & Infrastructure
 
@@ -192,9 +192,8 @@ docs/
 
 OTW
 
-1. Similar Games
-2. Genre Pages
-3. Public Launch
+1. Public Launch
+2. M15 - Scale & Infrastructure (Redis, Caching, Queues)
 
 ## Database
 
