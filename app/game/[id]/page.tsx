@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import StatCard from '@/components/cards/StatCard'
+import SimilarGames from '@/components/game/SimilarGames'
 import Container from '@/components/ui/Container'
 import Skeleton from '@/components/ui/Skeleton'
 import { Metadata } from 'next'
@@ -115,6 +116,8 @@ export default async function GamePage({ params }: Props) {
 
         <p className="text-content-muted">{game.description || 'No description available.'}</p>
       </section>
+
+      <SimilarGames gameId={game.id} />
     </Container>
   )
 }
