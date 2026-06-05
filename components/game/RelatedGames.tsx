@@ -28,7 +28,8 @@ export default function RelatedGames({ gameId }: Props) {
   if (isLoading) {
     return (
       <section className="mt-12">
-        <h2 className="mb-4 type-section-title">Related Games</h2>
+        <p className="type-label text-brand">Pattern match</p>
+        <h2 className="mb-4 mt-1 type-section-title">Related Games</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 3 }).map((_, i) => (
             <Skeleton key={i} className="h-64 w-full rounded-card" />
@@ -42,7 +43,8 @@ export default function RelatedGames({ gameId }: Props) {
 
   return (
     <section className="mt-12">
-      <h2 className="mb-4 type-section-title">Related Games</h2>
+      <p className="type-label text-brand">Pattern match</p>
+      <h2 className="mb-2 mt-1 type-section-title">Related Games</h2>
       <p className="mb-4 text-sm text-content-muted">Games with similar player activity patterns.</p>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {games.map((game) => (

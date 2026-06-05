@@ -40,11 +40,11 @@ export default function RankingCard({ game, variant }: Props) {
   const label = typeof config.label === 'function' ? config.label(game) : ''
 
   return (
-    <Link href={`/game/${game.id}`} prefetch={false} aria-label={game.name}>
-      <article className="grid gap-4 rounded-card border border-border-default bg-surface shadow-card p-4 transition hover:border-brand sm:grid-cols-[160px_1fr]">
+    <Link href={`/game/${game.id}`} prefetch={false} aria-label={game.name} className="group block">
+      <article className="premium-panel grid gap-4 rounded-card p-4 transition duration-300 hover:-translate-y-1 hover:border-brand/70 sm:grid-cols-[172px_1fr]">
         <div className="relative aspect-video overflow-hidden rounded-control bg-surface-muted sm:aspect-square">
           {game.thumbnail ? (
-            <Image src={game.thumbnail} alt={game.name} fill sizes="160px" className="object-cover" loading="lazy" />
+            <Image src={game.thumbnail} alt={game.name} fill sizes="172px" className="object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
           ) : (
             <div className="flex h-full items-center justify-center text-sm text-content-subtle">Roblox Game</div>
           )}
@@ -57,12 +57,12 @@ export default function RankingCard({ game, variant }: Props) {
               <h2 className="type-card-title truncate">{game.name}</h2>
               <p className="mt-1 text-sm text-content-muted">by {game.creator}</p>
             </div>
-            <p className="text-sm font-semibold text-positive">{label}</p>
+            <p className="rounded-full border border-positive/25 bg-positive/10 px-3 py-1 text-sm font-semibold text-positive">{label}</p>
           </div>
 
-          <div className="mt-4 grid gap-3 text-sm sm:grid-cols-3">
+          <div className="mt-5 grid gap-3 text-sm sm:grid-cols-3">
             {config.stats.map((stat) => (
-              <div key={stat.label}>
+              <div key={stat.label} className="rounded-control border border-border-default bg-background/45 p-3">
                 <p className="text-content-subtle">{stat.label}</p>
                 <p className="mt-1 font-semibold text-content">{stat.value(game)}</p>
               </div>

@@ -2,7 +2,7 @@ import Skeleton from '@/components/ui/Skeleton'
 
 export default function RankingCardSkeleton() {
   return (
-    <div className="grid gap-4 rounded-card border border-border-default bg-surface p-4 sm:grid-cols-[160px_1fr]">
+    <div className="premium-panel grid gap-4 rounded-card p-4 sm:grid-cols-[172px_1fr]">
       <Skeleton className="aspect-video sm:aspect-square" />
 
       <div className="space-y-3">

@@ -6,6 +6,7 @@ import SearchBar from '@/components/search/SearchBar'
 import GameCard from '@/components/cards/GameCard'
 import { useSearch } from '@/hooks/useSearch'
 import Container from '@/components/ui/Container'
+import Skeleton from '@/components/ui/Skeleton'
 import type { Game } from '@/types/game'
 
 const SORT_OPTIONS = [
@@ -75,35 +76,40 @@ export default function SearchPage() {
   }
 
   return (
-    <Container as="main" className="py-6">
-      <div className="mb-8">
+    <Container as="main" className="py-8 md:py-12">
+      <div className="mb-8 text-center">
+        <p className="type-label text-brand">Discovery search</p>
+        <h1 className="type-page-title mt-2">Search the Roblox atlas</h1>
         <SearchBar />
       </div>
 
       {!query ? (
-        <div className="rounded-card border border-border-default bg-surface shadow-card p-10 text-center">
+        <div className="premium-panel rounded-card p-10 text-center">
           <h2 className="type-card-title">Search BloxAtlas</h2>
           <p className="mt-2 text-content-muted">Enter a game name to find Roblox games.</p>
         </div>
       ) : isLoading ? (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="animate-pulse rounded-card border border-border-default bg-surface p-4">
-              <div className="aspect-video rounded-md bg-surface-muted" />
-              <div className="mt-3 h-4 w-3/4 rounded bg-surface-muted" />
-              <div className="mt-2 h-3 w-1/2 rounded bg-surface-muted" />
+            <div key={i} className="premium-panel overflow-hidden rounded-card">
+              <Skeleton className="aspect-video rounded-none" />
+              <div className="space-y-3 p-4">
+                <Skeleton className="h-4 w-3/4" />
+                <Skeleton className="h-3 w-1/2" />
+                <Skeleton className="h-3 w-2/3" />
+              </div>
             </div>
           ))}
         </div>
       ) : error ? (
-        <div className="rounded-card border border-border-default bg-surface shadow-card p-10 text-center">
+        <div className="premium-panel rounded-card p-10 text-center">
           <h2 className="type-card-title">Search failed</h2>
           <p className="mt-2 text-content-muted">{error}</p>
         </div>
       ) : (
         <>
-          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-content-muted">
+          <div className="premium-panel mb-6 flex flex-col gap-3 rounded-card p-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm text-content-muted">
               {total} result{total !== 1 ? 's' : ''} for &ldquo;{query}&rdquo;
             </p>
 
@@ -111,7 +117,7 @@ export default function SearchPage() {
               <select
                 value={sort}
                 onChange={(e) => handleSortChange(e.target.value)}
-                className="rounded-control border border-border-default bg-surface px-3 py-2 text-sm text-content outline-none focus:border-brand"
+                className="rounded-control border border-border-default bg-background/60 px-3 py-2 text-sm text-content outline-none transition focus:border-brand"
                 aria-label="Sort by"
               >
                 {SORT_OPTIONS.map((opt) => (
@@ -122,7 +128,7 @@ export default function SearchPage() {
               <select
                 value={genre}
                 onChange={(e) => handleGenreChange(e.target.value)}
-                className="rounded-control border border-border-default bg-surface px-3 py-2 text-sm text-content outline-none focus:border-brand"
+                className="rounded-control border border-border-default bg-background/60 px-3 py-2 text-sm text-content outline-none transition focus:border-brand"
                 aria-label="Filter by genre"
               >
                 {GENRE_OPTIONS.map((opt) => (
@@ -151,7 +157,7 @@ export default function SearchPage() {
                 <button
                   onClick={handlePrevPage}
                   disabled={page <= 1}
-                  className="rounded-control border border-border-default bg-surface px-4 py-2 text-sm text-content-muted transition hover:text-content disabled:opacity-30"
+                  className="rounded-control border border-border-default bg-surface/70 px-4 py-2 text-sm text-content-muted transition hover:border-brand/60 hover:text-content disabled:opacity-30"
                 >
                   Previous
                 </button>
@@ -159,14 +165,14 @@ export default function SearchPage() {
                 <button
                   onClick={handleNextPage}
                   disabled={!hasMore}
-                  className="rounded-control border border-border-default bg-surface px-4 py-2 text-sm text-content-muted transition hover:text-content disabled:opacity-30"
+                  className="rounded-control border border-border-default bg-surface/70 px-4 py-2 text-sm text-content-muted transition hover:border-brand/60 hover:text-content disabled:opacity-30"
                 >
                   Next
                 </button>
               </div>
             </>
           ) : (
-            <div className="rounded-card border border-border-default bg-surface shadow-card p-10 text-center">
+            <div className="premium-panel rounded-card p-10 text-center">
               <h2 className="type-card-title">No games found</h2>
               <p className="mt-2 text-content-muted">Try another search keyword or adjust your filters.</p>
             </div>

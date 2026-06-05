@@ -1,5 +1,6 @@
 'use client'
 
+import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { useState, useRef, useCallback } from 'react'
 import Button from '@/components/ui/Button'
@@ -101,9 +102,15 @@ export default function SearchBar() {
   const showHistory = !showSuggestions && filteredHistory.length > 0
 
   return (
-    <div className="relative mx-auto mt-8 max-w-2xl">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
+    <div className="relative mx-auto mt-8 max-w-3xl">
+      <form onSubmit={handleSubmit} className="premium-panel flex flex-col gap-3 rounded-[20px] p-2 sm:flex-row">
         <div className="relative min-w-0 flex-1">
+          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-content-subtle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
           <input
             ref={inputRef}
             value={query}
@@ -115,15 +122,15 @@ export default function SearchBar() {
             aria-label="Search Roblox games"
             autoComplete="off"
             className="
-              min-w-0 w-full rounded-card border border-border-default bg-surface px-4 py-3
-              outline-none focus:border-brand
+              min-w-0 w-full rounded-[16px] border border-transparent bg-background/55 py-4 pl-11 pr-10
+              text-base text-content outline-none placeholder:text-content-subtle transition focus:border-brand/60 focus:bg-surface/80
             "
           />
           {query && (
             <button
               type="button"
               onClick={handleClearQuery}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-content-subtle hover:text-content"
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-content-subtle transition hover:bg-surface-muted hover:text-content"
               aria-label="Clear search"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -133,11 +140,18 @@ export default function SearchBar() {
             </button>
           )}
         </div>
-        <Button type="submit">Search</Button>
+        <Button type="submit" className="min-h-14 px-6">Search</Button>
       </form>
 
+      <AnimatePresence>
       {showDropdown && (showSuggestions || showHistory) && (
-        <div className="absolute left-0 right-0 z-50 mt-2 overflow-hidden rounded-card border border-border-default bg-surface shadow-card">
+        <motion.div
+          initial={{ opacity: 0, y: 8, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 8, scale: 0.98 }}
+          transition={{ duration: 0.18 }}
+          className="absolute left-0 right-0 z-50 mt-3 overflow-hidden rounded-[18px] border border-border-default bg-background-elevated/95 shadow-card backdrop-blur-xl"
+        >
           {showSuggestions && (
             <div className="py-2">
               <p className="px-4 py-1 text-xs text-content-subtle uppercase tracking-wide">Suggestions</p>
@@ -147,7 +161,7 @@ export default function SearchBar() {
                   type="button"
                   onMouseDown={(e) => e.preventDefault()}
                   onClick={() => handleSelectSuggestion(s.name)}
-                  className="flex w-full items-center gap-3 px-4 py-2 text-left text-sm text-content-muted hover:bg-surface-muted transition"
+                  className="flex w-full items-center gap-3 px-4 py-3 text-left text-sm text-content-muted transition hover:bg-surface-muted hover:text-content"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                     <circle cx="11" cy="11" r="8" />
@@ -172,7 +186,7 @@ export default function SearchBar() {
                     localStorage.removeItem(HISTORY_KEY)
                     setHistory([])
                   }}
-                  className="text-xs text-content-subtle hover:text-content"
+                  className="rounded-md px-2 py-1 text-xs text-content-subtle transition hover:bg-surface-muted hover:text-content"
                 >
                   Clear All
                 </button>
@@ -186,7 +200,7 @@ export default function SearchBar() {
                     setQuery(term)
                     search(term)
                   }}
-                  className="flex w-full items-center gap-3 px-4 py-2 text-left text-sm text-content-muted hover:bg-surface-muted transition"
+                  className="flex w-full items-center gap-3 px-4 py-3 text-left text-sm text-content-muted transition hover:bg-surface-muted hover:text-content"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                     <polyline points="1 4 1 10 7 10" />
@@ -197,8 +211,9 @@ export default function SearchBar() {
               ))}
             </div>
           )}
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </div>
   )
 }
