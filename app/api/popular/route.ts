@@ -25,6 +25,10 @@ export async function GET(request: NextRequest) {
         metric: 'playing',
         secondaryMetric: 'visits',
       },
+    }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=59',
+      },
     })
   } catch (error) {
     console.error('Failed to load popular games ranking', error)

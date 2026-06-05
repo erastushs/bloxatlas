@@ -1,9 +1,13 @@
 import Image from 'next/image'
-
+import dynamic from 'next/dynamic'
 import StatCard from '@/components/cards/StatCard'
-import PlayerChart from '@/components/charts/PlayerChart'
 import Container from '@/components/ui/Container'
+import Skeleton from '@/components/ui/Skeleton'
 import { Metadata } from 'next'
+
+const PlayerChart = dynamic(() => import('@/components/charts/PlayerChart'), {
+  loading: () => <Skeleton className="h-[300px] w-full rounded-card" />,
+})
 
 type Props = {
   params: Promise<{
@@ -16,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
 
   const response = await fetch(`${baseUrl}/api/game/${id}`, {
-    cache: 'no-store',
+    next: { revalidate: 300 },
   })
 
   const data = await response.json()
@@ -38,13 +42,13 @@ export default async function GamePage({ params }: Props) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
 
   const response = await fetch(`${baseUrl}/api/game/${id}`, {
-    cache: 'no-store',
+    next: { revalidate: 300 },
   })
 
   const data = await response.json()
 
   const growthResponse = await fetch(`${baseUrl}/api/game/${id}/growth`, {
-    cache: 'no-store',
+    next: { revalidate: 60 },
   })
 
   const growthData = await growthResponse.json()

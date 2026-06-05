@@ -1,8 +1,25 @@
+import dynamic from 'next/dynamic'
 import SearchBar from '@/components/search/SearchBar'
-import PopularGames from '@/components/home/PopularGames'
-import StatsBar from '@/components/home/StatsBar'
 import Container from '@/components/ui/Container'
+import Skeleton from '@/components/ui/Skeleton'
 import { createOrganizationSchema } from '@/lib/seo'
+
+const StatsBar = dynamic(() => import('@/components/home/StatsBar'), {
+  loading: () => <SkeletonGrid count={3} />,
+})
+const PopularGames = dynamic(() => import('@/components/home/PopularGames'), {
+  loading: () => <SkeletonGrid count={6} />,
+})
+
+function SkeletonGrid({ count }: { count: number }) {
+  return (
+    <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {Array.from({ length: count }).map((_, i) => (
+        <Skeleton key={i} className="h-64 w-full rounded-card" />
+      ))}
+    </div>
+  )
+}
 
 export default function HomePage() {
   return (
@@ -24,9 +41,7 @@ export default function HomePage() {
           <SearchBar />
         </div>
       </section>
-      <div className="mt-12">
-        <StatsBar />
-      </div>
+      <StatsBar />
       <PopularGames />
     </Container>
   )

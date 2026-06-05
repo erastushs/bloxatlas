@@ -40,11 +40,11 @@ export default function RankingCard({ game, variant }: Props) {
   const label = typeof config.label === 'function' ? config.label(game) : ''
 
   return (
-    <Link href={`/game/${game.id}`} prefetch={false}>
+    <Link href={`/game/${game.id}`} prefetch={false} aria-label={game.name}>
       <article className="grid gap-4 rounded-card border border-border-default bg-surface shadow-card p-4 transition hover:border-brand sm:grid-cols-[160px_1fr]">
         <div className="relative aspect-video overflow-hidden rounded-control bg-surface-muted sm:aspect-square">
           {game.thumbnail ? (
-            <Image src={game.thumbnail} alt={game.name} fill sizes="160px" className="object-cover" />
+            <Image src={game.thumbnail} alt={game.name} fill sizes="160px" className="object-cover" loading="lazy" />
           ) : (
             <div className="flex h-full items-center justify-center text-sm text-content-subtle">Roblox Game</div>
           )}

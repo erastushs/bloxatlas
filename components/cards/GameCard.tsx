@@ -15,7 +15,7 @@ type Props = {
 
 export default function GameCard({ id, name, creator, playing, visits, thumbnail }: Props) {
   return (
-    <Link href={`/game/${id}`} prefetch={false}>
+    <Link href={`/game/${id}`} prefetch={false} aria-label={name}>
       <Card hover>
         <div className="relative aspect-video">
           {thumbnail ? (
@@ -25,6 +25,7 @@ export default function GameCard({ id, name, creator, playing, visits, thumbnail
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
               className="object-cover"
+              loading="lazy"
             />
           ) : (
             <div className="flex h-full items-center justify-center bg-surface-muted">

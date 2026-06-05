@@ -9,5 +9,9 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
   return NextResponse.json({
     success: true,
     game,
+  }, {
+    headers: {
+      'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+    },
   })
 }

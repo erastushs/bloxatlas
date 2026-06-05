@@ -23,6 +23,7 @@ export default function SearchBar() {
         onChange={(e) => setQuery(e.target.value)}
         type="text"
         placeholder="Search Roblox games..."
+            aria-label="Search Roblox games"
         className="
           min-w-0
           w-full

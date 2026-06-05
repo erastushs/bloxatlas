@@ -25,6 +25,10 @@ export async function GET(request: NextRequest) {
         metric: 'last_synced_at',
         secondaryMetric: 'playing',
       },
+    }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
+      },
     })
   } catch (error) {
     console.error('Failed to load recently updated games', error)
