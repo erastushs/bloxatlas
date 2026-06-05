@@ -20,6 +20,10 @@ export const navigation = [
     href: '/recently-updated',
   },
   {
+    name: 'Genres',
+    href: '/genres',
+  },
+  {
     name: 'Search',
     href: '/search',
   },

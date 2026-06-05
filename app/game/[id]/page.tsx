@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import StatCard from '@/components/cards/StatCard'
 import SimilarGames from '@/components/game/SimilarGames'
@@ -93,7 +94,12 @@ export default async function GamePage({ params }: Props) {
       <header className="mb-10">
         <h1 className="type-display">{game.name}</h1>
 
-        <p className="mt-3 text-content-muted">by {game.creator}</p>
+        <p className="mt-3 text-content-muted">
+          by{' '}
+          <Link href={`/creator/${encodeURIComponent(game.creator)}`} className="text-brand hover:underline">
+            {game.creator}
+          </Link>
+        </p>
       </header>
 
       <section>

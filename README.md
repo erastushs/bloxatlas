@@ -168,8 +168,8 @@ docs/
 
 - [x] Similar Games
 - [x] Related Games
-- [ ] Genre Pages
-- [ ] Creator Pages
+- [x] Genre Pages
+- [x] Creator Pages
 - [ ] Collection Pages
 - [ ] Advanced Discovery
 
