@@ -20,6 +20,10 @@
   --color-danger-border: #fecaca;
   --color-accent: #8b5cf6;
   --color-hot: #fb7185;
+  --color-gradient-mid: #d9dfe8;
+  --color-shimmer: rgb(0 0 0 / 0.06);
+  --color-panel-gradient-from: rgb(0 0 0 / 0.03);
+  --color-panel-gradient-to: rgb(0 0 0 / 0.015);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
   --radius-card: 1rem;
@@ -44,6 +48,10 @@
   --color-danger: #fda4af;
   --color-danger-surface: rgb(127 29 29 / 0.24);
   --color-danger-border: rgb(251 113 133 / 0.24);
+  --color-gradient-mid: #090d17;
+  --color-shimmer: rgb(255 255 255 / 0.1);
+  --color-panel-gradient-from: rgb(255 255 255 / 0.08);
+  --color-panel-gradient-to: rgb(255 255 255 / 0.035);
   --shadow-card: 0 22px 70px rgb(0 0 0 / 0.35);
 }
 
@@ -112,7 +120,7 @@ body {
   background:
     radial-gradient(circle at 15% -10%, rgb(34 211 238 / 0.18), transparent 34rem),
     radial-gradient(circle at 92% 5%, rgb(167 139 250 / 0.16), transparent 30rem),
-    linear-gradient(180deg, var(--color-bg), #090d17 42rem, var(--color-bg));
+    linear-gradient(180deg, var(--color-bg), var(--color-gradient-mid) 42rem, var(--color-bg));
   color: var(--color-text);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
@@ -191,7 +199,7 @@ body {
 
   .premium-panel {
     border: 1px solid var(--color-border);
-    background: linear-gradient(180deg, rgb(255 255 255 / 0.08), rgb(255 255 255 / 0.035));
+    background: linear-gradient(180deg, var(--color-panel-gradient-from), var(--color-panel-gradient-to));
     box-shadow: var(--shadow-card);
     backdrop-filter: blur(18px);
   }
@@ -229,7 +237,7 @@ body {
     position: absolute;
     inset: 0;
     transform: translateX(-100%);
-    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.1), transparent);
+    background: linear-gradient(90deg, transparent, var(--color-shimmer), transparent);
     animation: shimmer 1.8s infinite;
     content: '';
   }
