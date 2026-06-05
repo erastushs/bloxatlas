@@ -140,7 +140,7 @@ docs/
 - [x] Responsive Charts
 - [x] Image Optimization (Basic)
 - [x] Tablet Optimization
-- [ ] Route Prefetching
+- [x] Route Prefetching
 - [ ] Core Web Vitals Optimization
 - [ ] Lighthouse 90+
 

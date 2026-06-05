@@ -40,7 +40,7 @@ export default function RankingCard({ game, variant }: Props) {
   const label = typeof config.label === 'function' ? config.label(game) : ''
 
   return (
-    <Link href={`/game/${game.id}`}>
+    <Link href={`/game/${game.id}`} prefetch={false}>
       <article className="grid gap-4 rounded-card border border-border-default bg-surface shadow-card p-4 transition hover:border-brand sm:grid-cols-[160px_1fr]">
         <div className="relative aspect-video overflow-hidden rounded-control bg-surface-muted sm:aspect-square">
           {game.thumbnail ? (

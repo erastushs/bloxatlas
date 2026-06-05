@@ -15,7 +15,7 @@ type Props = {
 
 export default function GameCard({ id, name, creator, playing, visits, thumbnail }: Props) {
   return (
-    <Link href={`/game/${id}`}>
+    <Link href={`/game/${id}`} prefetch={false}>
       <Card hover>
         <div className="relative aspect-video">
           {thumbnail ? (
