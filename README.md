@@ -170,8 +170,8 @@ docs/
 - [x] Related Games
 - [x] Genre Pages
 - [x] Creator Pages
-- [ ] Collection Pages
-- [ ] Advanced Discovery
+- [x] Collection Pages
+- [x] Advanced Discovery
 
 ### M14 - Platform Features
 

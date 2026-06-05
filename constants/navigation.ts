@@ -24,6 +24,10 @@ export const navigation = [
     href: '/genres',
   },
   {
+    name: 'Collections',
+    href: '/collections',
+  },
+  {
     name: 'Search',
     href: '/search',
   },
