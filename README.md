@@ -141,7 +141,7 @@ docs/
 - [x] Image Optimization (Basic)
 - [x] Tablet Optimization
 - [x] Route Prefetching
-- [ ] Core Web Vitals Optimization
+- [x] Core Web Vitals Optimization
 - [ ] Lighthouse 90+
 
 ### M11 - SEO & Release Preparation
