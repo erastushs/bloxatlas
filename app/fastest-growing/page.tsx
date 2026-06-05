@@ -1,10 +1,11 @@
 'use client'
 
-import FastestGrowingCard from '@/components/cards/FastestGrowingCard'
+import RankingCard from '@/components/cards/RankingCard'
+import RankingCardSkeleton from '@/components/cards/RankingCardSkeleton'
 import { useFastestGrowing } from '@/hooks/useFastestGrowing'
 import Container from '@/components/ui/Container'
 import PageHeader from '@/components/ui/PageHeader'
-import Skeleton from '@/components/ui/Skeleton'
+import type { FastestGrowingGame } from '@/types/game'
 
 export default function FastestGrowingPage() {
   const { games, isLoading, error } = useFastestGrowing()
@@ -20,18 +21,7 @@ export default function FastestGrowingPage() {
       {isLoading ? (
         <div className="space-y-4">
           {Array.from({ length: 6 }).map((_, index) => (
-            <div key={index} className="grid gap-4 rounded-card border border-border-default bg-surface shadow-card p-4 sm:grid-cols-[160px_1fr]">
-              <Skeleton className="aspect-video sm:aspect-square" />
-              <div className="space-y-4">
-                <Skeleton className="h-5 w-2/3" />
-                <Skeleton className="h-4 w-1/3" />
-                <div className="grid gap-3 sm:grid-cols-3">
-                  <Skeleton className="h-12" />
-                  <Skeleton className="h-12" />
-                  <Skeleton className="h-12" />
-                </div>
-              </div>
-            </div>
+            <RankingCardSkeleton key={index} />
           ))}
         </div>
       ) : null}
@@ -50,7 +40,7 @@ export default function FastestGrowingPage() {
       {!isLoading && !error && games.length > 0 ? (
         <div className="space-y-4">
           {games.map((game) => (
-            <FastestGrowingCard key={game.id} game={game} />
+            <RankingCard key={game.id} game={game as FastestGrowingGame} variant="fastest-growing" />
           ))}
         </div>
       ) : null}

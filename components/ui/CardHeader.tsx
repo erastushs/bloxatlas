@@ -1,7 +1,8 @@
 interface CardHeaderProps {
   children: React.ReactNode
+  className?: string
 }
 
-export function CardHeader({ children }: CardHeaderProps) {
-  return <div className="mb-3">{children}</div>
+export function CardHeader({ children, className = '' }: CardHeaderProps) {
+  return <div className={`mb-3 ${className}`}>{children}</div>
 }
