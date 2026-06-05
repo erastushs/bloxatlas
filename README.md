@@ -1,237 +1,266 @@
 # BloxAtlas
 
-Explore Roblox Through Data
+BloxAtlas is a Roblox analytics and discovery platform for exploring games through live activity, growth signals, rankings, historical snapshots, and public API data.
+
+Website: https://bloxatlas.vercel.app
 
 ## Overview
 
-BloxAtlas adalah platform analytics dan discovery Roblox yang berfokus pada pencarian game, statistik, pertumbuhan game, dan data historis.
+BloxAtlas helps players, creators, researchers, and developers understand Roblox games through data. It tracks indexed Roblox experiences, player activity, visits, growth momentum, creators, genres, collections, and related discovery signals.
 
-Tujuan jangka panjang adalah menjadi pusat data Roblox yang menyediakan informasi game, analitik, serta Public API untuk developer dan komunitas.
+The product is designed as a premium gaming analytics dashboard: dark-first, fast, responsive, data-focused, and built for discovery workflows.
 
----
+## Core Features
+
+- Roblox game search with suggestions and local search history.
+- Popular games ranking by active players.
+- Trending games ranking based on snapshot momentum.
+- Fastest growing games ranking.
+- Top active games ranking.
+- Recently updated games.
+- Game detail analytics dashboard.
+- Historical player activity chart.
+- Active player, visit, creator, and snapshot metrics.
+- Similar games and related games discovery.
+- Genre pages.
+- Creator pages.
+- Curated collection pages.
+- Public API for developers.
+- API documentation page.
+- SEO-ready pages with metadata, sitemap, robots.txt, Open Graph, and structured data.
+- Automated data collection through collector jobs and cron routes.
+- Redis-backed caching for faster rankings, search, and game data.
+
+## Product Experience
+
+BloxAtlas uses a modern SaaS and gaming-inspired interface:
+
+- Dark theme as the primary experience.
+- Subtle glassmorphism.
+- Premium gradients and depth.
+- Sticky responsive navigation.
+- Command palette for quick navigation.
+- Animated statistics.
+- Smooth reveal, dropdown, and card loading animations.
+- Shimmer skeleton states.
+- Mobile-first responsive layouts.
+- Accessible focus states and reduced-motion support.
 
 ## Tech Stack
 
-- Next.js 16
+- Next.js 16 App Router
+- React 19
 - TypeScript
-- Tailwind CSS
+- Tailwind CSS 4
+- Framer Motion
+- Recharts
 - Supabase
-- Upstash Redis (planned)
-- Vercel
+- Upstash Redis
+- Vercel Analytics
+- Vercel Speed Insights
+- ESLint
+- tsx for collector jobs
 
----
-
-## Project Structure
+## Architecture
 
 ```txt
-app/
-components/
-hooks/
-lib/
-services/
-types/
-docs/
+app/                 Next.js App Router pages and API routes
+components/          Reusable UI, layout, motion, search, cards, charts
+constants/           Site, navigation, and API constants
+hooks/               Client-side data fetching hooks
+services/            Server-side business logic and data services
+lib/                 Supabase, Redis, cache, queue, SEO, Roblox utilities
+collector/           Roblox data collection sources and jobs
+types/               Shared TypeScript types
+docs/                Documentation and changelog
+public/              Static assets and branding
 ```
 
----
+## Public Pages
 
-## Roadmap
+- `/` - homepage and discovery cockpit
+- `/search` - game search and filters
+- `/game/[id]` - game analytics dashboard
+- `/trending` - trending games
+- `/fastest-growing` - fastest growing games
+- `/top-active` - top active games
+- `/recently-updated` - recently updated games
+- `/genres` - genre index
+- `/genre/[slug]` - games by genre
+- `/creator/[name]` - games by creator
+- `/collections` - curated collection index
+- `/collection/[slug]` - collection detail
+- `/developers` - developer page
+- `/api/docs` - API documentation
 
-### M1 - Foundation ✅
+## Public API
 
-- [x] Next.js Setup
-- [x] Tailwind Setup
-- [x] App Router Setup
-- [x] Project Structure
-- [x] Navbar
-- [x] Homepage Hero
-- [x] Search Page
-- [x] Game Detail Page
-- [x] Supabase Integration
+Base URL:
 
-### M2 - Search System ✅
+```txt
+https://bloxatlas.vercel.app
+```
 
-- [x] Search API
-- [x] Search Results Page
-- [x] Query Search
+Available endpoints:
 
-### M3 - Analytics Foundation ✅
+```txt
+GET /api/v1/games
+GET /api/v1/games/{id}
+GET /api/v1/games/{id}/history
+GET /api/v1/stats
+GET /api/v1/rankings
+```
 
-- [x] Games Table
-- [x] Snapshots Table
-- [x] Homepage Analytics
-- [x] Game Stats API
-- [x] Historical Data Foundation
+Example:
 
-### M4 - MVP Polish ✅
+```bash
+curl "https://bloxatlas.vercel.app/api/v1/games?q=adopt&page=1&limit=10"
+```
 
-- [x] Fix Thumbnail System
-- [x] Improve Game Detail Page
-- [x] Add Footer
-- [x] Add Empty States
-- [x] Loading Skeletons
+Rate limit:
 
-### M5 - Data Collection System ✅
+```txt
+60 requests per minute per IP
+```
 
-- [x] Roblox Source Layer
-- [x] Game Discovery
-- [x] Snapshot Collection
-- [x] Collector Runner
-- [x] Collector Metrics
-- [x] Collector Pagination
-- [x] Bulk Roblox Stats Fetch
-- [x] Bulk Roblox Thumbnail Fetch
-- [x] Batch Snapshot Insert
-- [x] Batch Game Upsert
-- [x] Sync Optimization
-- [x] Snapshot Optimization
-- [x] Refresh Games During Snapshot
-- [x] 2300+ Games Indexed
-- [x] 12000+ Snapshots Collected
+Response headers include:
 
-### M6 - Analytics & Rankings ✅
+```txt
+X-RateLimit-Limit
+X-RateLimit-Remaining
+X-RateLimit-Reset
+```
 
-- [x] Growth API
-- [x] Historical Charts
-- [x] Popular Games Ranking
-- [x] Trending Games
-- [x] Fastest Growing Games
-- [x] Top Active Games
-- [x] Recently Updated Games
-- [x] Ranking Services
-- [x] Snapshot-Based Analytics
+## Data Collection
 
-### M6.5 - Infrastructure & Operations ✅
+BloxAtlas includes a collector system for syncing Roblox game data and storing historical snapshots.
 
-- [x] Production Database
-- [x] Vercel Deployment
-- [x] Vercel Cron Setup
-- [x] Cron Verification
-- [x] Snapshot Pagination
-- [x] Analytics Pagination
-- [x] Collector Optimization
-- [x] Sync Optimization
-- [x] Vercel Analytics
-- [x] Vercel Speed Insights
-- [x] Error Monitoring (Basic)
+Collector capabilities:
 
-### M7 - UI/UX Foundation
+- Roblox source layer.
+- Seed-based game discovery.
+- Game metadata sync.
+- Active player and visit snapshots.
+- Bulk stats fetching.
+- Bulk thumbnail fetching.
+- Batch game upserts.
+- Batch snapshot inserts.
+- Snapshot refresh flow.
+- Job handlers for cache invalidation and queue processing.
 
-- [x] Brand Identity
-- [x] Final Logo System
-- [x] Favicon
-- [x] Design Tokens
-- [x] Color System
-- [x] Typography System
-- [x] Reusable UI Components
-- [x] Loading Skeletons
-- [x] Empty States
-- [x] Error States
-- [x] Dark Theme Refinement
-- [x] fix Search
-- [x] Card Variants
+Run collector jobs:
 
-### M8 - Responsive & Performance
+```bash
+npm run collector
+```
 
-- [x] Mobile Navigation
-- [x] Mobile Homepage
-- [x] Mobile Rankings
-- [x] Mobile Search
-- [x] Responsive Charts
-- [x] Image Optimization (Basic)
-- [x] Tablet Optimization
-- [x] Route Prefetching
-- [x] Core Web Vitals Optimization
-- [x] Lighthouse 90+
+## Caching & Performance
 
-### M11 - SEO & Release Preparation
+BloxAtlas is optimized for fast perceived performance and production use:
 
-- [x] Metadata Optimization
-- [x] Sitemap
-- [x] Robots.txt
-- [x] Dynamic Game Sitemap
-- [x] Structured Data
-- [x] Open Graph Images
-- [x] Error Monitoring (Basic)
-- [x] Google Search Console Verification
+- Redis-backed cache layer.
+- Cached rankings.
+- Cached search responses.
+- Cached game data.
+- Route-level revalidation.
+- Lazy-loaded homepage sections.
+- Dynamic chart loading.
+- Optimized images through `next/image`.
+- Skeleton loading states.
+- Reduced layout shift through stable component sizing.
 
-### M12 - Launch Readiness
+## SEO & Monitoring
 
-- [x] Deploy to Vercel
-- [x] Enable Automated Collection
-- [x] Mobile Ready
-- [x] SEO Ready
-- [x] Monitoring Ready
-- [ ] Public Launch
+Included production-readiness features:
 
-### M13 - Discovery Features
+- Metadata configuration.
+- Dynamic game metadata.
+- Organization and game structured data.
+- Sitemap.
+- Robots.txt.
+- Open Graph image support.
+- Google Search Console verification.
+- Vercel Analytics.
+- Vercel Speed Insights.
 
-- [x] Similar Games
-- [x] Related Games
-- [x] Genre Pages
-- [x] Creator Pages
-- [x] Collection Pages
-- [x] Advanced Discovery
+## Getting Started
 
-### M14 - Platform Features
+Install dependencies:
 
-- [x] Public API
-- [x] API Documentation
-- [x] API Rate Limiting
-- [x] Developer Dashboard
+```bash
+npm install
+```
 
-### M15 - Scale & Infrastructure
+Run the development server:
 
-- [x] Upstash Redis
-- [x] Cached Rankings
-- [x] Cached Search
-- [x] Background Queue
-- [x] Multi-Source Collection
+```bash
+npm run dev
+```
 
----
+Open:
 
-OTW
+```txt
+http://localhost:3000
+```
 
-1. Public Launch
+If port `3000` is already in use, Next.js will choose another available port.
 
-## Database
+## Environment Variables
 
-### games
+Create `.env.local` and configure the required services:
 
-Stores indexed Roblox games.
+```txt
+NEXT_PUBLIC_SITE_URL=
+SUPABASE_URL=
+SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+UPSTASH_REDIS_REST_URL=
+UPSTASH_REDIS_REST_TOKEN=
+CRON_SECRET=
+```
 
-Current fields:
+Exact variable usage may depend on deployment mode and collector configuration.
 
-- id
-- name
-- creator
-- playing
-- visits
-- description
-- thumbnail
-- created_at
+## Scripts
 
-### snapshots
+```bash
+npm run dev        # Start local development server
+npm run build      # Create production build
+npm run start      # Start production server
+npm run lint       # Run ESLint
+npm run collector  # Run collector jobs
+```
 
-Planned table for historical statistics.
+## Verification
 
----
+The publish UI release has been verified with:
 
-## Future Features
-
-- Creator Profiles
-- Game Analytics
-- Similar Games
-- Public API
-- Trending Algorithms
-- Fastest Growing Rankings
-
----
+```bash
+npm run lint
+npm run build
+```
 
 ## Deployment
 
-Planned:
+BloxAtlas is built for Vercel deployment with:
 
-- Vercel
-- Supabase
-- Upstash Redis
+- Next.js App Router.
+- Vercel cron routes.
+- Supabase database.
+- Upstash Redis cache.
+- Vercel Analytics.
+- Vercel Speed Insights.
+
+Production URL:
+
+```txt
+https://bloxatlas.vercel.app
+```
+
+## Changelog
+
+See [docs/changelog.md](docs/changelog.md) for release history.
+
+## License
+
+ISC
