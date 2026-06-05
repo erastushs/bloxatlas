@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Card from '@/components/ui/Card'
-import { CardContent } from '@/components/ui/CardContent'
-import { CardFooter } from '@/components/ui/CardFooter'
 
 type Props = {
   id: number
@@ -34,17 +32,14 @@ export default function GameCard({ id, name, creator, playing, visits, thumbnail
           )}
         </div>
 
-        <CardContent className="p-4">
+        <div className="p-4">
           <h3 className="type-card-title">{name}</h3>
           <p className="mt-1 text-sm text-content-muted">{creator}</p>
-        </CardContent>
-
-        <CardFooter>
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
             <p className="text-brand">{playing.toLocaleString()} Playing</p>
             {visits !== undefined ? <p className="text-content-subtle">{visits.toLocaleString()} Visits</p> : null}
           </div>
-        </CardFooter>
+        </div>
       </Card>
     </Link>
   )
