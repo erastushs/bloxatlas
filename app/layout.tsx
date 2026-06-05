@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import ScrollToTop from '@/components/ui/ScrollToTop'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { siteConfig } from '@/constants/site'
 import { Analytics } from '@vercel/analytics/react'
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Navbar />
           <main id="main-content">{children}</main>
           <Footer />
+          <ScrollToTop />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

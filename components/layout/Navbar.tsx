@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import BrandLogo from '@/components/brand/BrandLogo'
 import { ThemeToggle } from '@/components/layout/ThemeToggle'
 import CommandPalette from '@/components/layout/CommandPalette'
@@ -8,7 +9,11 @@ import { navigation } from '@/constants/navigation'
 import { useState } from 'react'
 
 export default function Navbar() {
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
+
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href)
   return (
     <header className="sticky top-0 z-50 border-b border-border-default bg-background/72 backdrop-blur-2xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6">
@@ -22,7 +27,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-[10px] px-3 py-2 transition hover:bg-surface-muted hover:text-content"
+                className={`rounded-[10px] px-3 py-2 transition hover:bg-surface-muted hover:text-content ${isActive(item.href) ? 'bg-brand/10 text-brand font-semibold' : 'text-content-muted'}`}
               >
                 {item.name}
               </Link>
@@ -64,7 +69,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-control px-3 py-3 text-content-muted transition hover:bg-surface-muted hover:text-content"
+                className={`rounded-control px-3 py-3 transition hover:bg-surface-muted hover:text-content ${isActive(item.href) ? 'bg-brand/10 text-brand font-semibold' : 'text-content-muted'}`}
                 onClick={() => setOpen(false)}
               >
                 {item.name}
