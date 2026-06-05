@@ -2,6 +2,7 @@ import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import StatCard from '@/components/cards/StatCard'
 import SimilarGames from '@/components/game/SimilarGames'
+import RelatedGames from '@/components/game/RelatedGames'
 import Container from '@/components/ui/Container'
 import Skeleton from '@/components/ui/Skeleton'
 import { Metadata } from 'next'
@@ -118,6 +119,8 @@ export default async function GamePage({ params }: Props) {
       </section>
 
       <SimilarGames gameId={game.id} />
+
+      <RelatedGames gameId={game.id} />
     </Container>
   )
 }

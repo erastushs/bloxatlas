@@ -167,7 +167,7 @@ docs/
 ### M13 - Discovery Features
 
 - [x] Similar Games
-- [ ] Related Games
+- [x] Related Games
 - [ ] Genre Pages
 - [ ] Creator Pages
 - [ ] Collection Pages
