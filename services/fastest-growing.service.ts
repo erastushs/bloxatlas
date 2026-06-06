@@ -2,9 +2,12 @@ import { supabase } from '@/lib/supabase'
 import { getCachedOrFetch } from '@/lib/cache'
 import type { FastestGrowingGame, Game } from '@/types/game'
 
-import { loadAllSnapshots } from '@/lib/load-all-snapshots'
+import { loadRecentSnapshots } from '@/lib/load-all-snapshots'
 
 const DEFAULT_FASTEST_GROWING_LIMIT = 12
+const RANKING_WINDOW_HOURS = getPositiveNumber(process.env.RANKING_WINDOW_HOURS, 24)
+const RANKING_MAX_SNAPSHOTS = getPositiveNumber(process.env.RANKING_MAX_SNAPSHOTS, 20000)
+const RANKING_CACHE_SECONDS = 60
 
 type SnapshotRow = {
   game_id: number
@@ -28,6 +31,12 @@ type GrowthCandidate = {
   snapshotCount: number
   measuredFrom: string
   measuredTo: string
+}
+
+function getPositiveNumber(value: string | undefined, fallback: number) {
+  const number = Number(value)
+
+  return Number.isFinite(number) && number > 0 ? number : fallback
 }
 
 function getGrowthPercent(firstPlaying: number, playerDelta: number) {
@@ -111,33 +120,33 @@ function toFastestGrowingGame(game: Game, candidate: GrowthCandidate, rank: numb
 }
 
 export async function getFastestGrowingGames(limit = DEFAULT_FASTEST_GROWING_LIMIT): Promise<FastestGrowingGame[]> {
-  return getCachedOrFetch(`fastest-growing:${limit}`, async () => {
-    const snapshots = await loadAllSnapshots()
+  return getCachedOrFetch(`fastest-growing:${limit}:${RANKING_WINDOW_HOURS}h:${RANKING_MAX_SNAPSHOTS}`, async () => {
+    const snapshots = await loadRecentSnapshots(RANKING_WINDOW_HOURS, RANKING_MAX_SNAPSHOTS)
 
-  const candidates = getGrowthCandidates(snapshots).slice(0, limit)
-  const gameIds = candidates.map((candidate) => candidate.gameId)
+    const candidates = getGrowthCandidates(snapshots).slice(0, limit)
+    const gameIds = candidates.map((candidate) => candidate.gameId)
 
-  if (gameIds.length === 0) {
-    return []
-  }
+    if (gameIds.length === 0) {
+      return []
+    }
 
-  const { data: games, error: gamesError } = await supabase
-    .from('games')
-    .select('id, name, creator, playing, visits, description, thumbnail')
-    .in('id', gameIds)
+    const { data: games, error: gamesError } = await supabase
+      .from('games')
+      .select('id, name, creator, playing, visits, description, thumbnail')
+      .in('id', gameIds)
 
-  if (gamesError) {
-    throw gamesError
-  }
+    if (gamesError) {
+      throw gamesError
+    }
 
-  const gamesById = new Map((games ?? []).map((game) => [game.id, game as Game]))
+    const gamesById = new Map((games ?? []).map((game) => [game.id, game as Game]))
 
-  return candidates
-    .map((candidate, index) => {
-      const game = gamesById.get(candidate.gameId)
+    return candidates
+      .map((candidate, index) => {
+        const game = gamesById.get(candidate.gameId)
 
-      return game ? toFastestGrowingGame(game, candidate, index + 1) : null
-    })
-    .filter((game): game is FastestGrowingGame => game !== null)
-  }, 60)
+        return game ? toFastestGrowingGame(game, candidate, index + 1) : null
+      })
+      .filter((game): game is FastestGrowingGame => game !== null)
+  }, RANKING_CACHE_SECONDS)
 }

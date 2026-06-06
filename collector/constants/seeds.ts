@@ -1,7 +1,7 @@
 export const seedQueries = [
   // --- Anime Populer ---
   'naruto',
-  'one piece',
+  /* 'one piece',
   'dragon ball',
   'bleach',
   'demon slayer',
@@ -472,5 +472,5 @@ export const seedQueries = [
   'ugc rewards',
   'free ugc',
   'event',
-  'leaderboard',
+  'leaderboard',*/
 ]
