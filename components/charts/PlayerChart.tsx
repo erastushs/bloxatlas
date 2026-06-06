@@ -6,8 +6,15 @@ import { Area, AreaChart, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContai
 type Props = {
   data: {
     playing: number
-    label: string
+    created_at: string
   }[]
+}
+
+function formatTime(value: string) {
+  return new Date(value).toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+  })
 }
 
 export default function PlayerChart({ data }: Props) {
@@ -25,10 +32,11 @@ export default function PlayerChart({ data }: Props) {
             </linearGradient>
           </defs>
           <CartesianGrid stroke={isDark ? 'rgb(148 163 184 / 0.12)' : 'rgb(148 163 184 / 0.2)'} vertical={false} />
-          <XAxis dataKey="label" tick={{ fontSize: 12, fill: isDark ? '#94a3b8' : '#64748b' }} axisLine={false} tickLine={false} />
+          <XAxis dataKey="created_at" tickFormatter={formatTime} tick={{ fontSize: 12, fill: isDark ? '#94a3b8' : '#64748b' }} axisLine={false} tickLine={false} />
 
           <YAxis width={68} tick={{ fontSize: 12, fill: isDark ? '#94a3b8' : '#64748b' }} axisLine={false} tickLine={false} />
           <Tooltip
+            labelFormatter={(value) => formatTime(String(value))}
             contentStyle={{
               backgroundColor: isDark ? 'rgb(14 20 36 / 0.96)' : 'rgb(255 255 255 / 0.96)',
               border: isDark ? '1px solid rgb(148 163 184 / 0.18)' : '1px solid rgb(203 213 225 / 0.8)',

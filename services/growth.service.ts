@@ -20,11 +20,5 @@ export async function getGameGrowth(gameId: number) {
     throw error
   }
 
-  return data.map((item) => ({
-    ...item,
-    label: new Date(item.created_at).toLocaleTimeString([], {
-      hour: '2-digit',
-      minute: '2-digit',
-    }),
-  }))
+  return data ?? []
 }
